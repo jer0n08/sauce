@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Montserrat } from "next/font/google";
+import { Bebas_Neue, Montserrat, Geist } from "next/font/google";
 import "./globals.css";
-import { SiteHeader } from "@/components/site-header";
+import { SiteHeaderAnimated } from "@/components/site-header-animated";
 import { SiteFooter } from "@/components/site-footer";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const bebas = Bebas_Neue({
   variable: "--font-display",
@@ -28,9 +31,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={cn("font-sans", geist.variable)}>
       <body suppressHydrationWarning className={`${bebas.variable} ${montserrat.variable}`}>
-        <SiteHeader />
+        <SiteHeaderAnimated />
         <main>{children}</main>
         <SiteFooter />
       </body>

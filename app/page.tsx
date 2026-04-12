@@ -67,7 +67,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/35" />
         <Reveal className="relative z-10 flex min-h-[520px] items-center px-6 md:min-h-[760px]">
           <div className="container-shell">
-            <h1 className="brand-font max-w-md text-6xl uppercase leading-[0.88] text-[var(--cream)] md:text-8xl">
+            <h1 className="brand-font max-w-md text-5xl uppercase leading-[0.88] text-[var(--cream)] md:text-8xl">
               <span className="inline-block bg-[#A74C17] px-2 text-white">Kebab</span>
               <br />
               <span className="inline-block bg-[#A74C17] px-2 text-white">Berliner</span>
@@ -76,7 +76,7 @@ export default function HomePage() {
             </h1>
             <Link
               href="/menu"
-              className="commander-btn rolling-btn brand-font mt-6 inline-block rounded-xl border-2 border-[#A74C17] bg-white px-5 py-4 text-4xl uppercase leading-none text-[var(--brand)] shadow-[4px_4px_0_#A74C17]"
+              className="commander-btn rolling-btn brand-font mt-6 inline-block rounded-xl border-2 border-[#A74C17] bg-white px-5 py-4 text-3xl md:text-4xl uppercase leading-none text-[var(--brand)] shadow-[4px_4px_0_#A74C17]"
             >
               <RollingText text="Commander" />
             </Link>
@@ -91,8 +91,9 @@ export default function HomePage() {
           </h1>
           <HorairesActions />
 
-          <div className="mt-16 grid gap-8 md:grid-cols-[1fr_1.2fr]">
-            <div className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[30px]">
+          <div className="mt-16 grid gap-20
+           md:grid-cols-[1fr_1fr] flex flex-start">
+            <div className="relative mx-auto md:mr-0 aspect-[3/4] w-full max-w-md overflow-hidden rounded-[30px]">
               <Image
                 src="/assets/images/658440595_17889865677446344_2492821235290666953_n.jpeg"
                 alt="Client degustant un kebab"
@@ -104,18 +105,18 @@ export default function HomePage() {
 
             <div className="text-[var(--brand)]">
               <div className="mb-4">
-                <p className="display-font inline-flex items-center gap-2 bg-[var(--brand)] px-2 text-3xl uppercase leading-none text-white">
+                <h3 className="display-font inline-flex items-center gap-2 bg-[var(--brand)] px-2 text-3xl uppercase leading-none text-white">
                   <img src="/assets/images/map.svg" alt="" width={18} height={18} aria-hidden="true" />
                   <span className="pt-1">Adresse</span>
-                </p>
+                </h3>
                 <p className="paragraph-text mt-2 text-base">57 Rue du Faubourg Montmartre, 75009 Paris</p>
               </div>
 
               <div className="mb-4">
-                <p className="display-font inline-flex items-center gap-2 bg-[var(--brand)] px-2 text-3xl uppercase leading-none text-white">
+                <h3 className="display-font inline-flex items-center gap-2 bg-[var(--brand)] px-2 text-3xl uppercase leading-none text-white">
                   <Image src="/assets/images/time.svg" alt="" width={23} height={23} aria-hidden="true" />
                   <span className="pt-1">Horaires</span>
-                </p>
+                </h3>
                 <div className="mt-2 grid w-fit grid-cols-[auto_max-content_max-content] gap-x-3 gap-y-1 text-base uppercase text-[var(--paragraph)] md:gap-x-6">
                   <span className="font-medium text-[var(--brand)]">Lun</span>
                   <span>11h30 - 14h30</span>
@@ -142,10 +143,10 @@ export default function HomePage() {
               </div>
 
               <div className="mb-4">
-                <p className="display-font inline-flex items-center gap-2 bg-[var(--brand)] px-2 text-3xl uppercase leading-none text-white">
+                <h3 className="display-font inline-flex items-center gap-2 bg-[var(--brand)] px-2 text-3xl uppercase leading-none text-white">
                   <Image src="/assets/images/metro.svg" alt="" width={23} height={23} aria-hidden="true" />
                   <span className="pt-1">Accès</span>
-                </p>
+                </h3>
                 <p className="paragraph-text mt-2 flex items-center gap-2 text-base">
                   <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#f1a3cf] text-[11px] font-semibold text-[#5b1d3d]">
                     7
@@ -155,10 +156,10 @@ export default function HomePage() {
               </div>
 
               <div>
-                <p className="display-font inline-flex items-center gap-2 bg-[var(--brand)] px-2 text-3xl uppercase leading-none text-white">
+                <h3 className="display-font inline-flex items-center gap-2 bg-[var(--brand)] px-2 text-3xl uppercase leading-none text-white">
                   <Image src="/assets/images/phone.svg" alt="" width={23} height={23} aria-hidden="true" />
                   <span className="pt-1">Téléphone</span>
-                </p>
+                </h3>
                 <p className="paragraph-text mt-2 text-base">07 43 50 00 25</p>
               </div>
             </div>
@@ -167,7 +168,7 @@ export default function HomePage() {
           <div className="mt-10 text-center">
             <Link
               href="/menu"
-              className="commander-btn rolling-btn brand-font inline-block rounded-xl border-2 border-[#A74C17] bg-white px-5 py-4 text-4xl uppercase leading-none text-[var(--brand)] shadow-[4px_4px_0_#A74C17]"
+              className="commander-btn rolling-btn brand-font inline-block rounded-xl border-2 border-[#A74C17] bg-white px-5 py-4 text-3xl md:text-4xl uppercase leading-none text-[var(--brand)] shadow-[4px_4px_0_#A74C17]"
             >
               <RollingText text="Voir le menu" />
             </Link>
