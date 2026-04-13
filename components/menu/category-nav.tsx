@@ -1,7 +1,5 @@
 "use client";
 
-import gsap from "gsap";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { RollingText } from "@/components/rolling-text";
 import type { MenuCategoryId } from "@/types/menu";
 
@@ -14,8 +12,6 @@ type CategoryNavProps = {
   categories: CategoryLink[];
 };
 
-gsap.registerPlugin(ScrollSmoother);
-
 export function CategoryNav({ categories }: CategoryNavProps) {
   const handleScrollTo = (categoryId: MenuCategoryId) => {
     const target = document.getElementById(categoryId);
@@ -26,12 +22,6 @@ export function CategoryNav({ categories }: CategoryNavProps) {
     const offset = window.innerWidth < 768 ? 112 : 128;
     const absoluteY = target.getBoundingClientRect().top + window.scrollY - offset;
     const targetY = Math.max(0, absoluteY);
-    const smoother = ScrollSmoother.get();
-
-    if (smoother) {
-      smoother.scrollTo(targetY, true);
-      return;
-    }
 
     window.scrollTo({ top: targetY, behavior: "smooth" });
   };
