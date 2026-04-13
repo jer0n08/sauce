@@ -3,6 +3,7 @@
 import { useEffect, useId } from "react";
 import { createPortal } from "react-dom";
 import { ExternalLink } from "lucide-react";
+import { XIcon } from "@/components/ui/x";
 import { RollingText } from "@/components/rolling-text";
 
 type DeliveryPopupProps = {
@@ -48,10 +49,10 @@ export function DeliveryPopup({ isOpen, onClose }: DeliveryPopupProps) {
         <button
           type="button"
           aria-label="Fermer la pop-up livraison"
-          className="absolute right-3 top-3 inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-[var(--brand)] bg-white text-lg leading-none text-[var(--brand)] transition-colors duration-250 hover:bg-[var(--brand)] hover:text-[var(--cream)]"
+          className="absolute right-3 top-3 inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border-2 border-[var(--brand)] bg-white text-lg leading-none text-[var(--brand)] transition-colors duration-250 hover:bg-[var(--brand)] hover:text-[var(--cream)]"
           onClick={onClose}
         >
-          X
+          <XIcon size={18} className="shrink-0" aria-hidden="true" />
         </button>
 
         <p id={titleId} className="brand-font text-4xl uppercase leading-none">
@@ -64,13 +65,13 @@ export function DeliveryPopup({ isOpen, onClose }: DeliveryPopupProps) {
             href="https://www.ubereats.com/fr"
             target="_blank"
             rel="noreferrer"
-            className="rolling-btn flex items-center justify-between gap-3 rounded-xl border-2 border-[var(--brand)] bg-white px-4 py-3 text-left text-2xl font-medium leading-none text-[#162328] transition-transform duration-300 hover:scale-[1.02]"
+            className="rolling-btn flex items-center justify-between gap-3 rounded-xl border-2 border-[var(--brand)] bg-white px-4 py-3 text-left text-2xl leading-none text-[#162328] transition-transform duration-300 hover:scale-[1.02]"
           >
-            <span className="inline-flex items-center gap-2">
+            <span className="inline-flex items-center gap-0">
               <RollingText text="Uber" className="[&>.rolling-text-row-back]:text-[#162328]" />
               <RollingText
                 text="Eats"
-                className="[&>.rolling-text-row-front]:text-[#162328] [&>.rolling-text-row-back]:text-[#3FC060]"
+                className="[&_.rolling-char]:font-medium [&>.rolling-text-row-front]:text-[#162328] [&>.rolling-text-row-back]:text-[#3FC060]"
               />
             </span>
             <ExternalLink className="h-5 w-5 shrink-0" aria-hidden="true" />
@@ -79,11 +80,11 @@ export function DeliveryPopup({ isOpen, onClose }: DeliveryPopupProps) {
             href="https://deliveroo.fr"
             target="_blank"
             rel="noreferrer"
-            className="rolling-btn flex items-center justify-between gap-3 rounded-xl border-2 border-[var(--brand)] bg-white px-4 py-3 text-left text-2xl font-medium leading-none text-[#00CDBC] transition-transform duration-300 hover:scale-[1.02]"
+            className="rolling-btn flex items-center justify-between gap-3 rounded-xl border-2 border-[var(--brand)] bg-white px-4 py-3 text-left text-2xl font-bold leading-none text-[#00CDBC] transition-transform duration-300 hover:scale-[1.02]"
           >
             <RollingText
               text="deliveroo"
-              className="[&>.rolling-text-row-front]:text-[#00CDBC] [&>.rolling-text-row-back]:text-[#00CDBC]"
+              className="[&_.rolling-char]:font-bold [&>.rolling-text-row-front]:text-[#00CDBC] [&>.rolling-text-row-back]:text-[#00CDBC]"
             />
             <ExternalLink className="h-5 w-5 shrink-0" aria-hidden="true" />
           </a>

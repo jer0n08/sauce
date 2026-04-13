@@ -1,0 +1,109 @@
+{
+  "hero": {
+    "title": "MENU",
+    "imageSrc": "/assets/images/menu-banner.png",
+    "imageAlt": "Selection de plats Sauce."
+  },
+  "categories": [
+    {
+      "id": "berliner",
+      "label": "Berliner",
+      "description": "Pain croustillant, viande grillee et sauces maison.",
+      "items": [
+        {
+          "id": "berliner-classique",
+          "name": "Berliner Classique",
+          "price": "9,50 €",
+          "description": "Viande, salade, tomates, oignons et sauce maison.",
+          "image": "/assets/images/menu-banner.png",
+          "alt": "Berliner classique Sauce"
+        },
+         {
+          "id": "berliner-classique",
+          "name": "Berliner Classique",
+          "price": "9,50 €",
+          "description": "Viande, salade, tomates, oignons et sauce maison.",
+          "image": "/assets/images/menu-banner.png",
+          "alt": "Berliner classique Sauce"
+        },
+        {
+          "id": "berliner-fromage",
+          "name": "Berliner Fromage",
+          "price": "10,50 €",
+          "description": "Version fondante avec fromage et double sauce.",
+          "image": "/assets/images/IMG_6933.PNG",
+          "alt": "Berliner fromage Sauce"
+        }
+      ]
+    },
+    {
+      "id": "durums",
+      "label": "Durums",
+      "description": "Galette chaude, roulee minute.",
+      "items": [
+        {
+          "id": "durum-classique",
+          "name": "Durum Classique",
+          "price": "9,00 €",
+          "description": "Galette, viande grillee, crudites et sauce au choix.",
+          "image": "/assets/images/hf_20260407_110616_70860d9a-2596-429f-ba27-122cc762b314.png",
+          "alt": "Durum classique Sauce"
+        },
+        {
+          "id": "durum-poulet",
+          "name": "Durum Poulet",
+          "price": "9,50 €",
+          "description": "Poulet marine, crudites fraiches et sauce blanche.",
+          "image": "/assets/images/658440595_17889865677446344_2492821235290666953_n.jpeg",
+          "alt": "Durum poulet Sauce"
+        }
+      ]
+    },
+    {
+      "id": "assiettes",
+      "label": "Assiettes",
+      "description": "Servies avec accompagnements et sauces maison.",
+      "items": [
+        {
+          "id": "assiette-berliner",
+          "name": "Assiette Berliner",
+          "price": "13,50 €",
+          "description": "Viande grillade, salade composee et pain chaud.",
+          "image": "/assets/images/IMG_6933.PNG",
+          "alt": "Assiette Berliner Sauce"
+        },
+        {
+          "id": "assiette-mixte",
+          "name": "Assiette Mixte",
+          "price": "14,50 €",
+          "description": "Selection de viandes, legumes croquants et sauce signature.",
+          "image": "/assets/images/menu-banner.png",
+          "alt": "Assiette mixte Sauce"
+        }
+      ]
+    },
+    {
+      "id": "frites",
+      "label": "Frites",
+      "description": "Dorées, croustillantes et genereuses.",
+      "items": [
+        {
+          "id": "frites-maison",
+          "name": "Frites Maison",
+          "price": "4,00 €",
+          "description": "Portion croustillante salee minute.",
+          "image": "/assets/images/hf_20260407_110616_70860d9a-2596-429f-ba27-122cc762b314.png",
+          "alt": "Frites maison Sauce"
+        },
+        {
+          "id": "frites-cheddar",
+          "name": "Frites Cheddar",
+          "price": "5,50 €",
+          "description": "Frites maison, cheddar fondant et topping oignons frits.",
+          "image": "/assets/images/658440595_17889865677446344_2492821235290666953_n.jpeg",
+          "alt": "Frites cheddar Sauce"
+        }
+      ]
+    }
+  ]
+}

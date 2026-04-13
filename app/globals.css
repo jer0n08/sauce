@@ -17,8 +17,8 @@
   --brand-dark: #8a3f12;
   --cream: #e7cea0;
   --white: #ffffff;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: #e7cea0;
+  --foreground: #1f140e;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -243,6 +243,27 @@ body::-webkit-scrollbar-button:single-button {
 
 .site-burger.is-open .site-burger-line:nth-child(3) {
   transform: translateY(-9px) rotate(-45deg);
+}
+
+@keyframes page-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-fade-in {
+  animation: page-fade-in 500ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-fade-in {
+    animation: none;
+  }
 }
 
 @theme inline {

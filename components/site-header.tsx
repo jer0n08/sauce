@@ -113,7 +113,7 @@ export function SiteHeader() {
             aria-expanded={isOpen}
             aria-controls="site-nav-drawer"
             aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-            className="touch-manipulation flex items-center justify-center p-0"
+            className="touch-manipulation flex cursor-pointer items-center justify-center p-0"
             onClick={() => setIsOpen((value) => !value)}
           >
             <span className={`site-burger ${isOpen ? "is-open" : ""}`} aria-hidden="true">
@@ -142,7 +142,7 @@ export function SiteHeader() {
                       {link.action === "delivery" ? (
                         <button
                           type="button"
-                          className="rolling-btn brand-font block w-full px-2 py-1 text-4xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-6xl lg:text-7xl xl:text-7xl"
+                          className="rolling-btn brand-font block w-full cursor-pointer px-2 py-1 text-4xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-6xl lg:text-7xl xl:text-7xl"
                           onClick={() => {
                             setIsOpen(false);
                             setIsDeliveryOpen(true);
@@ -153,7 +153,7 @@ export function SiteHeader() {
                       ) : (
                         <Link
                           href={link.href}
-                          className="rolling-btn brand-font block px-2 py-1 text-4xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-6xl lg:text-7xl xl:text-7xl"
+                          className="rolling-btn brand-font block cursor-pointer px-2 py-1 text-4xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-6xl lg:text-7xl xl:text-7xl"
                           onClick={() => setIsOpen(false)}
                         >
                           <RollingText text={link.label} />

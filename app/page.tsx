@@ -1,6 +1,7 @@
 import { Reveal } from "@/components/reveal";
 import { RollingText } from "@/components/rolling-text";
 import { HorairesActions } from "@/components/horaires-actions";
+import { CursorTiltGallery } from "@/components/cursor-tilt-gallery";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -176,24 +177,7 @@ export default function HomePage() {
         </Reveal>
       </section>
 
-      <section className="overflow-hidden px-2 py-20 md:px-6">
-        <div className="mx-auto grid max-w-[1240px] gap-4 md:grid-cols-4 md:gap-6">
-          {[
-            { src: "/assets/images/hf_20260407_110616_70860d9a-2596-429f-ba27-122cc762b314.png", rotate: "rotate-12" },
-            { src: "/assets/images/IMG_6933.PNG", rotate: "-rotate-[10deg]" },
-            { src: "/assets/images/IMG_6930.PNG", rotate: "rotate-[9deg]" },
-            { src: "/assets/images/658440595_17889865677446344_2492821235290666953_n.jpeg", rotate: "-rotate-[12deg]" },
-          ].map((photo) => (
-            <Reveal key={photo.src} className="flex justify-center">
-              <div
-                className={`${photo.rotate} relative aspect-[3/4] w-[85%] overflow-hidden rounded-2xl border-[20px] border-white shadow-[0_12px_20px_rgba(0,0,0,0.16)] md:w-full`}
-              >
-                <Image src={photo.src} alt="Galerie Sauce" fill className="object-cover" sizes="(max-width: 768px) 70vw, 24vw" />
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <CursorTiltGallery />
     </div>
   );
 }

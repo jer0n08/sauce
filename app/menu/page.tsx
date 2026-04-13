@@ -1,19 +1,31 @@
+import { MenuBannerParallax } from "@/components/menu-banner-parallax";
+import { CategoryNav } from "@/components/menu/category-nav";
+import { CategorySection } from "@/components/menu/category-section";
+import menuDataJson from "@/data/menu.json";
+import type { MenuData } from "@/types/menu";
+
+const menuData = menuDataJson as MenuData;
+
 export default function MenuPage() {
   return (
-    <div className="space-y-8">
-      <header>
-        <h1 className="text-3xl font-semibold md:text-5xl">Menu</h1>
-        <p className="mt-3 text-black/70">Version placeholder prete a etre remplacee par ton contenu final.</p>
-      </header>
+    <div className="bg-[var(--background)]">
+      <MenuBannerParallax
+        title={menuData.hero.title}
+        imageSrc={menuData.hero.imageSrc}
+        imageAlt={menuData.hero.imageAlt}
+        imageClassName="object-[center_62%] md:object-[center_50%]"
+        sectionClassName="h-[40svh]"
+      />
 
-      <section className="surface-card rounded-2xl p-6">
-        <h2 className="text-xl font-medium">Kebabs</h2>
-        <ul className="mt-4 space-y-2 text-black/80">
-          <li>Classique - 9,50 EUR</li>
-          <li>Fromage - 10,50 EUR</li>
-          <li>Assiette - 13,50 EUR</li>
-        </ul>
-      </section>
+      <div className="container-shell px-1 py-10 md:py-14">
+        <CategoryNav categories={menuData.categories.map(({ id, label }) => ({ id, label }))} />
+
+        <div className="mt-10 space-y-12 md:space-y-16">
+          {menuData.categories.map((category) => (
+            <CategorySection key={category.id} category={category} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

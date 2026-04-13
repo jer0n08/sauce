@@ -3,6 +3,7 @@ import { Bebas_Neue, Montserrat, Geist } from "next/font/google";
 import "./globals.css";
 import { SiteHeaderAnimated } from "@/components/site-header-animated";
 import { SiteFooter } from "@/components/site-footer";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
@@ -34,8 +35,13 @@ export default function RootLayout({
     <html lang="fr" className={cn("font-sans", geist.variable)}>
       <body suppressHydrationWarning className={`${bebas.variable} ${montserrat.variable}`}>
         <SiteHeaderAnimated />
-        <main>{children}</main>
-        <SiteFooter />
+        <div id="smooth-wrapper">
+          <div id="smooth-content">
+            <main>{children}</main>
+            <SiteFooter />
+          </div>
+        </div>
+        <SmoothScroll />
       </body>
     </html>
   );
