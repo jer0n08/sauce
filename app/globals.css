@@ -241,6 +241,8 @@ body::-webkit-scrollbar-button:single-button {
   border-radius: 999px;
   background: var(--cream);
   transform-origin: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transition: transform 240ms ease, opacity 180ms ease;
 }
 
@@ -254,10 +256,10 @@ body::-webkit-scrollbar-button:single-button {
 }
 
 .site-burger.is-open .site-burger-line:nth-child(2) {
-  opacity: 0;
-  width: 0;
-  background: var(--brand);
-  
+  opacity: 0 !important;
+  visibility: hidden;
+  transform: scaleX(0);
+  background: transparent !important;
 }
 
 .site-burger.is-open .site-burger-line:nth-child(3) {
