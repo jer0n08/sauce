@@ -1,0 +1,119 @@
+{
+  "hero": {
+    "title": "Restaurants",
+    "imageSrc": "/assets/images/menu-banner.png",
+    "imageAlt": "Facade et ambiance des restaurants Sauce"
+  },
+  "restaurants": [
+    {
+      "id": "sauce-paris-opera",
+      "name": "Sauce Paris Opera",
+      "address": "57 Rue du Faubourg Montmartre, 75009 Paris",
+      "bannerImage": "/assets/images/hf_20260407_110616_70860d9a-2596-429f-ba27-122cc762b314.png",
+      "bannerAlt": "Restaurant Sauce a Paris",
+      "locations": ["paris", "ile-de-france"],
+      "timeZone": "Europe/Paris",
+      "openingHours": {
+        "mon": [["11:30", "14:30"], ["18:00", "23:00"]],
+        "tue": [["11:30", "15:30"], ["18:00", "23:00"]],
+        "wed": [["11:30", "15:30"], ["18:00", "02:00"]],
+        "thu": [["11:30", "15:30"], ["18:00", "02:00"]],
+        "fri": [["11:30", "15:30"], ["18:00", "02:00"]],
+        "sat": [["11:30", "02:00"]],
+        "sun": [["11:30", "15:30"], ["19:30", "23:00"]]
+      },
+      "deliveryLinks": {
+        "uberEats": "https://www.ubereats.com/fr/search?q=Sauce%20Paris%20Opera",
+        "deliveroo": "https://deliveroo.fr/fr/search?q=Sauce%20Paris%20Opera"
+      }
+    },
+    {
+      "id": "sauce-saint-denis",
+      "name": "Sauce Saint-Denis",
+      "address": "2 Place du Caquet, 93200 Saint-Denis",
+      "bannerImage": "/assets/images/658440595_17889865677446344_2492821235290666953_n.jpeg",
+      "bannerAlt": "Restaurant Sauce a Saint-Denis",
+      "locations": ["ile-de-france"],
+      "timeZone": "Europe/Paris",
+      "openingHours": {
+        "mon": [["11:30", "14:30"], ["18:00", "22:30"]],
+        "tue": [["11:30", "14:30"], ["18:00", "22:30"]],
+        "wed": [["11:30", "14:30"], ["18:00", "22:30"]],
+        "thu": [["11:30", "14:30"], ["18:00", "22:30"]],
+        "fri": [["11:30", "14:30"], ["18:00", "23:30"]],
+        "sat": [["12:00", "23:30"]],
+        "sun": [["12:00", "22:00"]]
+      },
+      "deliveryLinks": {
+        "uberEats": "https://www.ubereats.com/fr/search?q=Sauce%20Saint-Denis",
+        "deliveroo": "https://deliveroo.fr/fr/search?q=Sauce%20Saint-Denis"
+      }
+    },
+    {
+      "id": "sauce-bordeaux-centre",
+      "name": "Sauce Bordeaux Centre",
+      "address": "34 Rue Sainte-Catherine, 33000 Bordeaux",
+      "bannerImage": "/assets/images/IMG_6933.PNG",
+      "bannerAlt": "Restaurant Sauce a Bordeaux",
+      "locations": ["bordeaux"],
+      "timeZone": "Europe/Paris",
+      "openingHours": {
+        "mon": [["11:45", "14:30"], ["18:30", "22:30"]],
+        "tue": [["11:45", "14:30"], ["18:30", "22:30"]],
+        "wed": [["11:45", "14:30"], ["18:30", "22:30"]],
+        "thu": [["11:45", "14:30"], ["18:30", "22:30"]],
+        "fri": [["11:45", "14:30"], ["18:30", "23:30"]],
+        "sat": [["12:00", "23:30"]],
+        "sun": [["12:00", "22:00"]]
+      },
+      "deliveryLinks": {
+        "uberEats": "https://www.ubereats.com/fr/search?q=Sauce%20Bordeaux%20Centre",
+        "deliveroo": "https://deliveroo.fr/fr/search?q=Sauce%20Bordeaux%20Centre"
+      }
+    },
+    {
+      "id": "sauce-marseille-vieux-port",
+      "name": "Sauce Marseille Vieux-Port",
+      "address": "8 Quai des Belges, 13001 Marseille",
+      "bannerImage": "/assets/images/hf_20260407_110616_70860d9a-2596-429f-ba27-122cc762b314.png",
+      "bannerAlt": "Restaurant Sauce a Marseille",
+      "locations": ["marseille"],
+      "timeZone": "Europe/Paris",
+      "openingHours": {
+        "mon": [["12:00", "14:30"], ["18:30", "22:30"]],
+        "tue": [["12:00", "14:30"], ["18:30", "22:30"]],
+        "wed": [["12:00", "14:30"], ["18:30", "22:30"]],
+        "thu": [["12:00", "14:30"], ["18:30", "22:30"]],
+        "fri": [["12:00", "14:30"], ["18:30", "23:30"]],
+        "sat": [["12:00", "23:30"]],
+        "sun": [["12:00", "22:00"]]
+      },
+      "deliveryLinks": {
+        "uberEats": "https://www.ubereats.com/fr/search?q=Sauce%20Marseilles%20Vieux-Port",
+        "deliveroo": "https://deliveroo.fr/fr/search?q=Sauce%20Marseilles%20Vieux-Port"
+      }
+    },
+    {
+      "id": "sauce-nice-massena",
+      "name": "Sauce Nice Massena",
+      "address": "11 Rue Massena, 06000 Nice",
+      "bannerImage": "/assets/images/658440595_17889865677446344_2492821235290666953_n.jpeg",
+      "bannerAlt": "Restaurant Sauce a Nice",
+      "locations": ["nice"],
+      "timeZone": "Europe/Paris",
+      "openingHours": {
+        "mon": [["11:30", "14:30"], ["18:30", "22:30"]],
+        "tue": [["11:30", "14:30"], ["18:30", "22:30"]],
+        "wed": [["11:30", "14:30"], ["18:30", "22:30"]],
+        "thu": [["11:30", "14:30"], ["18:30", "22:30"]],
+        "fri": [["11:30", "14:30"], ["18:30", "23:30"]],
+        "sat": [["11:30", "23:30"]],
+        "sun": [["11:30", "22:00"]]
+      },
+      "deliveryLinks": {
+        "uberEats": "https://www.ubereats.com/fr/search?q=Sauce%20Nice%20Massena",
+        "deliveroo": "https://deliveroo.fr/fr/search?q=Sauce%20Nice%20Massena"
+      }
+    }
+  ]
+}

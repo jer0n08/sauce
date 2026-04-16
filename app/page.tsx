@@ -47,10 +47,10 @@ export default function HomePage() {
             LE GOÛT BRUT DE BERLIN, REVISITÉ À NOTRE MANIÈRE
           </h3>
           <p className="paragraph-text mx-auto mt-7 max-w-2xl text-sm leading-relaxed md:text-base">
-            Chez SAUCE, on ne fait pas un kebab classique. On fait un Berliner kebab,
-            fait, grille et servi comme il faut. Pain croustillant, viande parfaitement
-            grillee, legumes ultra-frais et sauces maison qui font toute la difference.
-            Chaque kebab est prepare a la commande avec une seule obsession: le gout,
+            Chez SAUCE, on ne fait pas un kebab classique. On fait un Berliner Kebab,
+            fait, grillé et servi comme il faut. Pain croustillant, viande parfaitement
+            grillée, légumes ultra-frais et sauces maison qui font toute la difference.
+            Chaque kebab est préparé à la commande avec une seule obsession: le goût,
             le vrai.
           </p>
         </Reveal>

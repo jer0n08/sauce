@@ -5,6 +5,8 @@ import { RollingText } from "@/components/rolling-text";
 const footerNavLinks = [
   { label: "Accueil", href: "/" },
   { label: "Menu", href: "/menu" },
+  { label: "Restaurants", href: "/restaurants" },
+  { label: "Franchise", href: "/franchise" },
   { label: "Livraison", href: "https://www.ubereats.com/fr", external: true },
   { label: "Horaires & accès", href: "/#horaires-acces" },
   { label: "FAQ", href: "/faq" },
@@ -38,7 +40,7 @@ export function SiteFooter() {
         <div className="mx-auto w-fit">
           <Image src="/assets/brand/logo-nav.svg" alt="Sauce" width={160} height={52} className="h-12 w-auto" />
         </div>
-        <nav className="mt-5 flex flex-col gap-2 text-3xl uppercase leading-none">
+        <nav className="mt-5 flex flex-col gap-2 text-2xl uppercase leading-none md:text-3xl">
           {footerNavLinks.map((item) =>
             item.external ? (
               <a

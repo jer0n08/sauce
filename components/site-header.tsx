@@ -13,6 +13,8 @@ type NavLink =
 const navLinks: NavLink[] = [
   { href: "/", label: "Accueil" },
   { href: "/menu", label: "Menu" },
+  { href: "/restaurants", label: "Restaurants" },
+  { href: "/franchise", label: "Franchise" },
   { action: "delivery", label: "Livraison" },
   { href: "/#horaires-acces", label: "Horaires & accès" },
   { href: "/faq", label: "FAQ" },
@@ -97,13 +99,13 @@ export function SiteHeader() {
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="container-shell relative py-5">
         <div className="pointer-events-auto relative z-50 flex h-16 items-center justify-between rounded-full bg-[var(--brand)] px-5 text-[var(--cream)] md:px-6">
-          <Link href="/" className="display-font text-2xl leading-none">
+          <Link href="/" className="group display-font text-2xl leading-none">
             <Image
               src="/assets/brand/logo-nav.svg"
               alt="Sauce"
               width={128}
               height={42}
-              className="h-8 w-auto"
+              className="h-8 w-auto group-hover:brightness-0 group-hover:invert"
               priority
             />
           </Link>
@@ -113,7 +115,7 @@ export function SiteHeader() {
             aria-expanded={isOpen}
             aria-controls="site-nav-drawer"
             aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-            className="touch-manipulation flex cursor-pointer items-center justify-center p-0"
+            className="site-burger-trigger touch-manipulation flex cursor-pointer items-center justify-center p-0"
             onClick={() => setIsOpen((value) => !value)}
           >
             <span className={`site-burger ${isOpen ? "is-open" : ""}`} aria-hidden="true">
@@ -142,7 +144,7 @@ export function SiteHeader() {
                       {link.action === "delivery" ? (
                         <button
                           type="button"
-                          className="rolling-btn brand-font block w-full cursor-pointer px-2 py-1 text-4xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-6xl lg:text-7xl xl:text-7xl"
+                          className="rolling-btn brand-font block w-full cursor-pointer px-2 py-1 text-3xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-5xl lg:text-6xl xl:text-6xl"
                           onClick={() => {
                             setIsOpen(false);
                             setIsDeliveryOpen(true);
@@ -153,7 +155,7 @@ export function SiteHeader() {
                       ) : (
                         <Link
                           href={link.href}
-                          className="rolling-btn brand-font block cursor-pointer px-2 py-1 text-4xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-6xl lg:text-7xl xl:text-7xl"
+                          className="rolling-btn brand-font block cursor-pointer px-2 py-1 text-3xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-5xl lg:text-6xl xl:text-6xl"
                           onClick={() => setIsOpen(false)}
                         >
                           <RollingText text={link.label} />

@@ -131,6 +131,17 @@ body::-webkit-scrollbar-button:single-button {
   box-shadow: 0 0 0 #a74c17 !important;
 }
 
+.commander-btn-compact {
+  transform: rotate(-0.8deg) !important;
+  box-shadow: 3px 3px 0 #a74c17 !important;
+  transition: transform 320ms ease-out, box-shadow 320ms ease-out;
+}
+
+.commander-btn-compact:hover {
+  transform: rotate(0deg) !important;
+  box-shadow: 1px 1px 0 #a74c17 !important;
+}
+
 .rolling-btn {
   position: relative;
   overflow: hidden;
@@ -233,12 +244,20 @@ body::-webkit-scrollbar-button:single-button {
   transition: transform 240ms ease, opacity 180ms ease;
 }
 
+.site-burger-trigger:hover .site-burger-line,
+.site-burger-trigger:focus-visible .site-burger-line {
+  background: #fff !important;
+}
+
 .site-burger.is-open .site-burger-line:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
 
 .site-burger.is-open .site-burger-line:nth-child(2) {
   opacity: 0;
+  width: 0;
+  background: var(--brand);
+  
 }
 
 .site-burger.is-open .site-burger-line:nth-child(3) {

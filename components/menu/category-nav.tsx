@@ -33,7 +33,7 @@ export function CategoryNav({ categories }: CategoryNavProps) {
           <li key={category.id}>
             <button
               type="button"
-              className="commander-btn rolling-btn brand-font cursor-pointer rounded-xl border-2 border-[#A74C17] bg-white px-4 py-2 text-2xl uppercase leading-none text-[var(--brand)] shadow-[4px_4px_0_#A74C17] md:text-3xl"
+              className="commander-btn rolling-btn brand-font cursor-pointer rounded-xl border-2 border-[#A74C17] bg-white px-3.5 py-1.5 text-xl uppercase leading-none text-[var(--brand)] shadow-[4px_4px_0_#A74C17] md:text-2xl"
               onClick={() => handleScrollTo(category.id)}
             >
               <RollingText text={category.label} />

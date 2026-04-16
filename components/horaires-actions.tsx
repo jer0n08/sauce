@@ -13,7 +13,7 @@ export function HorairesActions() {
       <div className="mt-12 flex flex-wrap justify-center gap-3">
         <button
           type="button"
-          className="commander-btn rolling-btn brand-font inline-flex items-center justify-center rounded-xl border-2 border-[#A74C17] bg-white px-4 py-2 text-3xl uppercase leading-none text-[var(--brand)] shadow-[4px_4px_0_#A74C17] md:text-4xl"
+          className="commander-btn rolling-btn brand-font inline-flex items-center justify-center rounded-xl border-2 border-[#A74C17] bg-white px-3.5 py-1.5 text-2xl uppercase leading-none text-[var(--brand)] shadow-[4px_4px_0_#A74C17] md:text-3xl"
           onClick={() => setIsDeliveryOpen(true)}
         >
           <RollingText text="Livraison" />
@@ -21,7 +21,7 @@ export function HorairesActions() {
 
         <Link
           href="/menu"
-          className="commander-btn rolling-btn brand-font inline-flex items-center justify-center rounded-xl border-2 border-[#A74C17] bg-white px-4 py-2 text-3xl uppercase leading-none text-[var(--brand)] shadow-[4px_4px_0_#A74C17] md:text-4xl"
+          className="commander-btn rolling-btn brand-font inline-flex items-center justify-center rounded-xl border-2 border-[#A74C17] bg-white px-3.5 py-1.5 text-2xl uppercase leading-none text-[var(--brand)] shadow-[4px_4px_0_#A74C17] md:text-3xl"
         >
           <RollingText text="Menu" />
         </Link>

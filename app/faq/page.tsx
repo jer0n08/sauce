@@ -1,32 +1,59 @@
-const questions = [
+import { MenuBannerParallax } from "@/components/menu-banner-parallax";
+const faqs = [
   {
-    q: "Quels sont vos horaires ?",
-    a: "Lundi au dimanche, 11h30 - 23h00.",
+    question: "Quels sont vos horaires ?",
+    answer: "Nous sommes ouverts tous les jours. Retrouvez le detail dans la section Horaires & acces.",
   },
   {
-    q: "Proposez-vous la livraison ?",
-    a: "Oui, via les plateformes partenaires.",
+    question: "Peut-on commander en livraison ?",
+    answer: "Oui, via Uber Eats et Deliveroo selon votre zone.",
   },
   {
-    q: "Y a-t-il des options vegetarian ?",
-    a: "Oui, plusieurs recettes sont disponibles.",
+    question: "Y a-t-il des options vegetariennes ?",
+    answer: "Oui, nous proposons des options adaptees au menu.",
+  },
+  {
+    question: "Ou se situe le restaurant ?",
+    answer: "57 Rue du Faubourg Montmartre, 75009 Paris.",
+  },
+  {
+    question: "Comment connaitre les allergenes ?",
+    answer: "Demandez a l'equipe sur place avant de commander.",
   },
 ];
 
 export default function FaqPage() {
   return (
-    <div className="space-y-8">
-      <header>
-        <h1 className="text-3xl font-semibold md:text-5xl">FAQ</h1>
-      </header>
+    <div className="bg-[var(--background)]">
+      <MenuBannerParallax
+        title="FAQ"
+        imageSrc="/assets/images/menu-banner.png"
+        imageAlt="Comptoir et equipe Sauce"
+        imageClassName="object-[center_56%] md:object-[center_45%]"
+        sectionClassName="h-[40svh]"
+      />
 
-      <section className="space-y-4">
-        {questions.map((item) => (
-          <details key={item.q} className="surface-card rounded-2xl p-5">
-            <summary className="cursor-pointer list-none font-medium">{item.q}</summary>
-            <p className="mt-3 text-black/70">{item.a}</p>
-          </details>
-        ))}
+      <section className="container-shell px-1 py-10 md:py-14">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="brand-font text-5xl uppercase leading-none text-[var(--brand)] md:text-7xl">Questions frequentes</h2>
+        </div>
+
+        <div className="mx-auto mt-8 max-w-4xl space-y-3">
+          {faqs.map((item) => (
+            <details
+              key={item.question}
+              className="group surface-card rounded-2xl border-2 border-[var(--brand)]/20 p-4 transition-colors open:bg-white"
+            >
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-3 [&::-webkit-details-marker]:hidden">
+                <span className="display-font text-2xl uppercase leading-none text-[var(--brand)] md:text-3xl">{item.question}</span>
+                <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-[var(--brand)] bg-[var(--cream)] text-xl leading-none text-[var(--brand)] transition-transform duration-250 group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p className="paragraph-text mt-3 text-sm leading-relaxed md:text-base">{item.answer}</p>
+            </details>
+          ))}
+        </div>
       </section>
     </div>
   );
