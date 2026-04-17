@@ -3,20 +3,29 @@
 import { useEffect, useRef } from "react";
 import NextImage from "next/image";
 
-const FRAME_COUNT = 181;
+const DESKTOP_FRAME_COUNT = 91;
+const MOBILE_FRAME_COUNT = 91;
 
 function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
 }
 
-function getFramePath(index: number) {
-  return `/assets/video-franchise/ezgif-frame-${String(index + 1).padStart(3, "0")}.png`;
+function getFramePath(index: number, isMobile: boolean) {
+  const folder = isMobile ? "/assets/video-franchise-mobile" : "/assets/video-franchise-desktop";
+  const ext = "webp";
+  return `${folder}/ezgif-frame-${String(index + 1).padStart(3, "0")}.${ext}`;
+}
+
+function getDesktopPngFallbackPath(index: number) {
+  const sourceIndex = Math.min(index * 2 + 1, 181);
+  return `/assets/video-franchise/ezgif-frame-${String(sourceIndex).padStart(3, "0")}.png`;
 }
 
 export function FranchiseScrollCanvas() {
   const sectionRef = useRef<HTMLElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
   const veilRef = useRef<HTMLDivElement>(null);
   const cardShellRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLElement>(null);
@@ -40,33 +49,42 @@ export function FranchiseScrollCanvas() {
       return;
     }
 
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const frameCount = isMobile ? MOBILE_FRAME_COUNT : DESKTOP_FRAME_COUNT;
+    const preloadRadius = isMobile ? 6 : 12;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const frames: Array<HTMLImageElement | null> = new Array(FRAME_COUNT).fill(null);
+    const frames: Array<HTMLImageElement | null> = new Array(frameCount).fill(null);
+    const loading = new Set<number>();
 
     let renderedFrame = -1;
     let rafId = 0;
     let ticking = false;
+    let disposed = false;
 
     const updateReviewsOverlay = (progress: number) => {
-      const scoreProgress = clamp((progress - 0.58) / 0.18);
+      if (progressBarRef.current) {
+        progressBarRef.current.style.width = `${Math.round(progress * 100)}%`;
+      }
+
+      const scoreProgress = clamp((progress - 0.24) / 0.18);
       const score = 3 + scoreProgress * 2;
       if (scoreRef.current) {
         scoreRef.current.textContent = score.toFixed(1);
       }
 
       if (veilRef.current) {
-        const veilOpacity = clamp((progress - 0.42) / 0.2) * 0.62;
+        const veilOpacity = clamp((progress - 0.14) / 0.2) * 0.62;
         veilRef.current.style.opacity = `${veilOpacity}`;
       }
 
-      const cardRevealStart = 0.56;
+      const cardRevealStart = 0.2;
       const cardRevealDuration = 0.2;
       const cardReveal = clamp((progress - cardRevealStart) / cardRevealDuration);
-      const fadeOutStart = 0.9;
-      const fadeOut = clamp((progress - fadeOutStart) / 0.06);
+      const fadeOutStart = 0.86;
+      const fadeOut = clamp((progress - fadeOutStart) / 0.03);
       const elementsOpacity = 1 - fadeOut;
-      const titleRevealStart = 0.97;
-      const titleReveal = clamp((progress - titleRevealStart) / 0.03);
+      const titleRevealStart = 0.91;
+      const titleReveal = clamp((progress - titleRevealStart) / 0.02);
 
       if (cardShellRef.current) {
         cardShellRef.current.style.opacity = `${cardReveal * elementsOpacity}`;
@@ -91,7 +109,6 @@ export function FranchiseScrollCanvas() {
         cardRef.current.style.transform = "translateY(0)";
         const shadowOffset = 6;
         cardRef.current.style.boxShadow = `${shadowOffset}px ${shadowOffset}px 0 var(--brand)`;
-        cardRef.current.style.minHeight = "196px";
       }
 
       for (let index = 0; index < 5; index += 1) {
@@ -139,6 +156,44 @@ export function FranchiseScrollCanvas() {
       renderedFrame = frameIndex;
     };
 
+    const ensureFrame = (frameIndex: number) => {
+      if (frameIndex < 0 || frameIndex >= frameCount || frames[frameIndex] || loading.has(frameIndex)) {
+        return;
+      }
+
+      loading.add(frameIndex);
+      const image = new Image();
+      image.src = getFramePath(frameIndex, isMobile);
+      image.onload = () => {
+        loading.delete(frameIndex);
+        if (disposed) {
+          return;
+        }
+
+        frames[frameIndex] = image;
+        requestTick();
+      };
+      image.onerror = () => {
+        if (!isMobile) {
+          image.onerror = () => {
+            loading.delete(frameIndex);
+          };
+          image.src = getDesktopPngFallbackPath(frameIndex);
+          return;
+        }
+
+        loading.delete(frameIndex);
+      };
+    };
+
+    const preloadAround = (frameIndex: number) => {
+      ensureFrame(frameIndex);
+      for (let offset = 1; offset <= preloadRadius; offset += 1) {
+        ensureFrame(frameIndex - offset);
+        ensureFrame(frameIndex + offset);
+      }
+    };
+
     const getScrollProgress = () => {
       const sectionHeight = section.offsetHeight - pin.offsetHeight;
       if (sectionHeight <= 0) {
@@ -150,7 +205,7 @@ export function FranchiseScrollCanvas() {
     };
 
     const getFrameFromProgress = (progress: number) => {
-      return Math.min(FRAME_COUNT - 1, Math.max(0, Math.round(progress * (FRAME_COUNT - 1))));
+      return Math.min(frameCount - 1, Math.max(0, Math.round(progress * (frameCount - 1))));
     };
 
     const updateFrame = () => {
@@ -158,14 +213,16 @@ export function FranchiseScrollCanvas() {
 
       const progress = prefersReducedMotion ? 1 : getScrollProgress();
       const videoProgress = prefersReducedMotion ? 1 : clamp(progress / 0.76);
-      const frameIndex = prefersReducedMotion ? FRAME_COUNT - 1 : getFrameFromProgress(videoProgress);
+      const frameIndex = prefersReducedMotion ? frameCount - 1 : getFrameFromProgress(videoProgress);
 
       updateReviewsOverlay(progress);
+      preloadAround(frameIndex);
       drawFrame(frameIndex);
     };
 
     const resizeCanvas = () => {
-      const dpr = window.devicePixelRatio || 1;
+      const maxDpr = isMobile ? 1.4 : 2;
+      const dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
       canvas.width = Math.round(pin.clientWidth * dpr);
       canvas.height = Math.round(pin.clientHeight * dpr);
       canvas.style.width = "100%";
@@ -186,22 +243,15 @@ export function FranchiseScrollCanvas() {
 
     resizeCanvas();
 
-    for (let index = 0; index < FRAME_COUNT; index += 1) {
-      const image = new Image();
-      image.src = getFramePath(index);
-      image.onload = () => {
-        frames[index] = image;
-        if (index === 0 || index === getFrameFromProgress(clamp(getScrollProgress() / 0.76))) {
-          requestTick();
-        }
-      };
-    }
+    ensureFrame(0);
+    preloadAround(0);
 
     window.addEventListener("scroll", requestTick, { passive: true });
     window.addEventListener("resize", resizeCanvas);
     requestTick();
 
     return () => {
+      disposed = true;
       window.removeEventListener("scroll", requestTick);
       window.removeEventListener("resize", resizeCanvas);
       window.cancelAnimationFrame(rafId);
@@ -209,8 +259,8 @@ export function FranchiseScrollCanvas() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative h-[420vh]" aria-label="Animation franchise Sauce">
-      <div ref={pinRef} className="sticky top-0 h-[76svh] overflow-hidden bg-black">
+    <section ref={sectionRef} className="relative h-[500vh] " aria-label="Animation franchise Sauce">
+      <div ref={pinRef} className="sticky top-0 h-[100svh] lg:h-[85svh] overflow-hidden bg-black">
         <canvas ref={canvasRef} className="h-full w-full" />
 
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.26),transparent_100%,transparent_68%,rgba(0,0,0,1))]" />
@@ -220,46 +270,54 @@ export function FranchiseScrollCanvas() {
           style={{ opacity: 0, transition: "opacity 180ms linear" }}
         />
 
+        <div className="pointer-events-none absolute inset-x-4 bottom-3 z-20 h-1.5 overflow-hidden rounded-full bg-[var(--cream)]/80 md:inset-x-8 md:bottom-5">
+          <div
+            ref={progressBarRef}
+            className="h-full w-0 rounded-full bg-[var(--brand)]"
+            style={{ transition: "width 120ms linear" }}
+          />
+        </div>
+
         <div
           ref={cardShellRef}
-          className="pointer-events-none absolute left-1/2 top-1/2 z-10 w-[calc(100%-2rem)] max-w-[360px] md:w-[360px]"
-          style={{ top: "calc(50% - 98px)", opacity: 0, transform: "translate(-50%, 24px)", transition: "opacity 220ms linear, transform 220ms linear" }}
+          className="pointer-events-none absolute left-1/2 top-1/2 z-10 w-[calc(100%-2.5rem)] max-w-[300px] md:w-[360px] md:max-w-[360px]"
+          style={{ top: "calc(50% - 90px)", opacity: 0, transform: "translate(-50%, 24px)", transition: "opacity 220ms linear, transform 220ms linear" }}
         >
           <article
             ref={cardRef}
-            className="relative flex min-h-[196px] flex-col items-center overflow-hidden rounded-[22px] border-2 border-[var(--brand)] bg-[linear-gradient(160deg,rgba(255,255,255,0.98),rgba(255,255,255,0.93))] p-4 text-[#202124] md:p-5"
+            className="relative flex min-h-[160px] flex-col items-center overflow-hidden rounded-[22px] border-2 border-[var(--brand)] bg-[linear-gradient(160deg,rgba(255,255,255,0.98),rgba(255,255,255,0.93))] p-3 text-[#202124] md:min-h-[188px] md:p-5"
             style={{ fontFamily: '"Google Sans", "Product Sans", Roboto, Arial, sans-serif', transform: "translateY(0)", boxShadow: "6px 6px 0 var(--brand)", transition: "transform 220ms linear, box-shadow 220ms linear" }}
           >
             <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[radial-gradient(circle_at_center,rgba(251,188,4,0.42),rgba(251,188,4,0))]" />
             <div className="absolute -left-8 -bottom-8 h-24 w-24 rounded-full bg-[radial-gradient(circle_at_center,rgba(66,133,244,0.24),rgba(66,133,244,0))]" />
 
-            <div className="relative mb-3 flex justify-center">
+            <div className="relative mb-2 flex justify-center md:mb-3">
               <NextImage
                 src="/assets/images/search.png"
                 alt="Google"
                 width={44}
                 height={44}
-                className="h-11 w-11 object-contain"
+                className="h-9 w-9 object-contain md:h-11 md:w-11"
                 sizes="44px"
               />
             </div>
 
             <div className="relative text-center">
-              <span ref={scoreRef} className="text-5xl font-bold leading-none text-[#202124] md:text-6xl">
+              <span ref={scoreRef} className="text-4xl font-bold leading-none text-[#202124] md:text-6xl">
                 3.0
               </span>
             </div>
 
-            <div className="relative mt-3 flex items-center justify-center gap-1.5">
+            <div className="relative mt-2 flex items-center justify-center gap-1 md:mt-3 md:gap-1.5">
               {Array.from({ length: 5 }).map((_, index) => (
                 <span
                   key={index}
                   ref={(node) => {
                     starRefs.current[index] = node;
                   }}
-                  className="relative inline-flex h-6 w-6 items-center justify-center origin-center transition-transform duration-200"
+                  className="relative inline-flex h-5 w-5 items-center justify-center origin-center transition-transform duration-200 md:h-6 md:w-6"
                 >
-                  <svg viewBox="0 0 24 24" className="h-6 w-6 fill-[#dadce0]" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#dadce0] md:h-6 md:w-6" aria-hidden="true">
                     <path d="M12 2.2l2.93 5.93 6.55.95-4.74 4.62 1.12 6.52L12 17.14l-5.86 3.08 1.12-6.52L2.52 9.08l6.55-.95L12 2.2z" />
                   </svg>
                   <span
@@ -269,7 +327,7 @@ export function FranchiseScrollCanvas() {
                     className="absolute inset-y-0 left-0 overflow-hidden"
                     style={{ width: index < 3 ? "100%" : "0%" }}
                   >
-                    <svg viewBox="0 0 24 24" className="h-6 w-6 fill-[#fbbc04]" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#fbbc04] md:h-6 md:w-6" aria-hidden="true">
                       <path d="M12 2.2l2.93 5.93 6.55.95-4.74 4.62 1.12 6.52L12 17.14l-5.86 3.08 1.12-6.52L2.52 9.08l6.55-.95L12 2.2z" />
                     </svg>
                   </span>
