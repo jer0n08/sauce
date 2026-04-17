@@ -4,19 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { DeliveryPopup } from "@/components/delivery-popup";
 import { RollingText } from "@/components/rolling-text";
 
-type NavLink =
-  | { label: string; href: string; action?: never }
-  | { label: string; action: "delivery"; href?: never };
+type NavLink = { label: string; href: string };
 
 const navLinks: NavLink[] = [
   { href: "/", label: "Accueil" },
   { href: "/menu", label: "Menu" },
   { href: "/restaurants", label: "Restaurants" },
   { href: "/franchise", label: "Franchise" },
-  { action: "delivery", label: "Livraison" },
   { href: "/#horaires-acces", label: "Horaires & accès" },
   { href: "/faq", label: "FAQ" },
 ];
@@ -81,7 +77,6 @@ function TikTokIcon() {
 
 export function SiteHeaderAnimated() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDeliveryOpen, setIsDeliveryOpen] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [cityTimes, setCityTimes] = useState(initialCityTimes);
   const menuPanelRef = useRef<HTMLDivElement>(null);
@@ -237,26 +232,13 @@ export function SiteHeaderAnimated() {
                 <ul ref={menuListRef} className="space-y-4 text-center pt-24">
                   {navLinks.map((link) => (
                     <li key={link.label} className="site-menu-item">
-                      {link.action === "delivery" ? (
-                        <button
-                          type="button"
-                          className="site-menu-link rolling-btn brand-font block w-full cursor-pointer px-2 py-1 text-3xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-5xl lg:text-6xl xl:text-6xl"
-                          onClick={() => {
-                            setIsOpen(false);
-                            setIsDeliveryOpen(true);
-                          }}
-                        >
-                          <RollingText text={link.label} />
-                        </button>
-                      ) : (
-                        <Link
-                          href={link.href}
-                          className="site-menu-link rolling-btn brand-font block cursor-pointer px-2 py-1 text-3xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-5xl lg:text-6xl xl:text-6xl"
-                          onClick={closeMenuImmediately}
-                        >
-                          <RollingText text={link.label} />
-                        </Link>
-                      )}
+                      <Link
+                        href={link.href}
+                        className="site-menu-link rolling-btn brand-font block cursor-pointer px-2 py-1 text-3xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-5xl lg:text-6xl xl:text-6xl"
+                        onClick={closeMenuImmediately}
+                      >
+                        <RollingText text={link.label} />
+                      </Link>
                     </li>
                   ))}
 
@@ -311,8 +293,6 @@ export function SiteHeaderAnimated() {
             </div>
           </div>
         </nav>
-
-        <DeliveryPopup isOpen={isDeliveryOpen} onClose={() => setIsDeliveryOpen(false)} />
       </div>
     </header>
   );

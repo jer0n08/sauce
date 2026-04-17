@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MenuBannerParallax } from "@/components/menu-banner-parallax";
+import { FranchiseScrollCanvas } from "@/components/franchise-scroll-canvas";
 import { RollingText } from "@/components/rolling-text";
 
 const processSteps = [
@@ -32,13 +32,7 @@ const supportHighlights = [
 export default function FranchisePage() {
   return (
     <div className="bg-[var(--background)]">
-      <MenuBannerParallax
-        title="Franchise"
-        imageSrc="/assets/images/658440595_17889865677446344_2492821235290666953_n.jpeg"
-        imageAlt="Equipe Sauce dans un restaurant"
-        imageClassName="object-[center_40%]"
-        sectionClassName="h-[42svh]"
-      />
+      <FranchiseScrollCanvas />
 
       <section className="container-shell px-1 py-10 md:py-14">
         <div className="mx-auto max-w-4xl text-center">

@@ -7,7 +7,6 @@ const footerNavLinks = [
   { label: "Menu", href: "/menu" },
   { label: "Restaurants", href: "/restaurants" },
   { label: "Franchise", href: "/franchise" },
-  { label: "Livraison", href: "https://www.ubereats.com/fr", external: true },
   { label: "Horaires & accès", href: "/#horaires-acces" },
   { label: "FAQ", href: "/faq" },
 ];
@@ -41,27 +40,15 @@ export function SiteFooter() {
           <Image src="/assets/brand/logo-nav.svg" alt="Sauce" width={160} height={52} className="h-12 w-auto" />
         </div>
         <nav className="mt-5 flex flex-col gap-2 text-2xl uppercase leading-none md:text-3xl">
-          {footerNavLinks.map((item) =>
-            item.external ? (
-              <a
-                key={item.label}
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                className="rolling-btn brand-font inline-block tracking-[0.02em] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00]"
-              >
-                <RollingText text={item.label} />
-              </a>
-            ) : (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="rolling-btn brand-font inline-block tracking-[0.02em] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00]"
-              >
-                <RollingText text={item.label} />
-              </Link>
-            ),
-          )}
+          {footerNavLinks.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="rolling-btn brand-font inline-block tracking-[0.02em] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00]"
+            >
+              <RollingText text={item.label} />
+            </Link>
+          ))}
 
           <div className="mt-2 inline-flex items-center justify-center gap-4">
             <a

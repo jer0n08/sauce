@@ -3,19 +3,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { DeliveryPopup } from "@/components/delivery-popup";
 import { RollingText } from "@/components/rolling-text";
 
-type NavLink =
-  | { label: string; href: string; action?: never }
-  | { label: string; action: "delivery"; href?: never };
+type NavLink = { label: string; href: string };
 
 const navLinks: NavLink[] = [
   { href: "/", label: "Accueil" },
   { href: "/menu", label: "Menu" },
   { href: "/restaurants", label: "Restaurants" },
   { href: "/franchise", label: "Franchise" },
-  { action: "delivery", label: "Livraison" },
   { href: "/#horaires-acces", label: "Horaires & accès" },
   { href: "/faq", label: "FAQ" },
 ];
@@ -72,7 +68,6 @@ function TikTokIcon() {
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDeliveryOpen, setIsDeliveryOpen] = useState(false);
   const [cityTimes, setCityTimes] = useState(initialCityTimes);
 
   useEffect(() => {
@@ -141,26 +136,13 @@ export function SiteHeader() {
                 <ul className="space-y-4 pt-24 text-center">
                   {navLinks.map((link) => (
                     <li key={link.label}>
-                      {link.action === "delivery" ? (
-                        <button
-                          type="button"
-                          className="rolling-btn brand-font block w-full cursor-pointer px-2 py-1 text-3xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-5xl lg:text-6xl xl:text-6xl"
-                          onClick={() => {
-                            setIsOpen(false);
-                            setIsDeliveryOpen(true);
-                          }}
-                        >
-                          <RollingText text={link.label} />
-                        </button>
-                      ) : (
-                        <Link
-                          href={link.href}
-                          className="rolling-btn brand-font block cursor-pointer px-2 py-1 text-3xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-5xl lg:text-6xl xl:text-6xl"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          <RollingText text={link.label} />
-                        </Link>
-                      )}
+                      <Link
+                        href={link.href}
+                        className="rolling-btn brand-font block cursor-pointer px-2 py-1 text-3xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-5xl lg:text-6xl xl:text-6xl"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <RollingText text={link.label} />
+                      </Link>
                     </li>
                   ))}
 
@@ -215,8 +197,6 @@ export function SiteHeader() {
             </div>
           </div>
         </nav>
-
-        <DeliveryPopup isOpen={isDeliveryOpen} onClose={() => setIsDeliveryOpen(false)} />
       </div>
     </header>
   );
