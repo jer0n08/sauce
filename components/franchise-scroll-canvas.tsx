@@ -350,7 +350,7 @@ export function FranchiseScrollCanvas() {
 
         <h1
           ref={finalTitleRef}
-          className="brand-font pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-6 text-center text-6xl uppercase leading-none text-white [text-shadow:4px_4px_0_var(--brand)] opacity-0 md:text-8xl"
+          className="brand-font pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-6 text-center text-7xl uppercase leading-none text-white [text-shadow:4px_4px_0_var(--brand)] opacity-0 md:text-9xl"
           style={{ transform: "translateY(16px)", transition: "opacity 220ms linear, transform 220ms linear" }}
         >
           DEVENEZ FRANCHISÉ

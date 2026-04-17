@@ -246,11 +246,6 @@ body::-webkit-scrollbar-button:single-button {
   transition: transform 240ms ease, opacity 180ms ease;
 }
 
-.site-burger-trigger:hover .site-burger-line,
-.site-burger-trigger:focus-visible .site-burger-line {
-  background: #fff !important;
-}
-
 .site-burger.is-open .site-burger-line:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
