@@ -121,7 +121,7 @@ body::-webkit-scrollbar-button:single-button {
 }
 
 .commander-btn {
-  transform: rotate(-1deg) !important;
+  transform: rotate(0deg) !important;
   box-shadow: 6px 6px 0 #a74c17 !important;
   transition: transform 420ms ease-out, box-shadow 420ms ease-out;
 }
@@ -132,7 +132,7 @@ body::-webkit-scrollbar-button:single-button {
 }
 
 .commander-btn-compact {
-  transform: rotate(-0.8deg) !important;
+  transform: rotate(0deg) !important;
   box-shadow: 3px 3px 0 #a74c17 !important;
   transition: transform 320ms ease-out, box-shadow 320ms ease-out;
 }
