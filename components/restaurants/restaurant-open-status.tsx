@@ -78,11 +78,38 @@ function isOpenNow(openingHours: OpeningHours, timeZone: string, now = new Date(
   return false;
 }
 
+function getNextOpeningTime(openingHours: OpeningHours, timeZone: string, now = new Date()) {
+  const { dayIndex, currentMinutes } = getLocalTimeParts(timeZone, now);
+
+  for (let dayOffset = 0; dayOffset < weekdayKeys.length; dayOffset += 1) {
+    const targetDayKey = weekdayKeys[(dayIndex + dayOffset) % weekdayKeys.length];
+    const ranges = openingHours[targetDayKey] ?? [];
+
+    for (const [start] of ranges) {
+      const startMinutes = parseTimeToMinutes(start);
+      const isLaterToday = dayOffset === 0 && startMinutes > currentMinutes;
+      const isFutureDay = dayOffset > 0;
+
+      if (isLaterToday || isFutureDay) {
+        return start;
+      }
+    }
+  }
+
+  return null;
+}
+
 export function RestaurantOpenStatus({ openingHours, timeZone }: RestaurantOpenStatusProps) {
   const [isOpen, setIsOpen] = useState<boolean | null>(null);
+  const [nextOpeningTime, setNextOpeningTime] = useState<string | null>(null);
 
   useEffect(() => {
-    const updateStatus = () => setIsOpen(isOpenNow(openingHours, timeZone));
+    const updateStatus = () => {
+      const openNow = isOpenNow(openingHours, timeZone);
+      setIsOpen(openNow);
+      setNextOpeningTime(openNow ? null : getNextOpeningTime(openingHours, timeZone));
+    };
+
     updateStatus();
 
     const intervalId = window.setInterval(updateStatus, 60_000);
@@ -101,12 +128,12 @@ export function RestaurantOpenStatus({ openingHours, timeZone }: RestaurantOpenS
   return (
     <span
       className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] ${
-        isOpen ? "bg-emerald-100 text-emerald-800" : "bg-red-100 text-red-800"
+        isOpen ? "bg-emerald-100 text-emerald-800" : "bg-zinc-200 text-zinc-700"
       }`}
       aria-live="polite"
     >
-      <span className={`h-2.5 w-2.5 rounded-full ${isOpen ? "bg-emerald-500" : "bg-red-500"}`} aria-hidden="true" />
-      {isOpen ? "Ouvert" : "Fermé"}
+      <span className={`h-2.5 w-2.5 rounded-full ${isOpen ? "bg-emerald-500" : "bg-zinc-500"}`} aria-hidden="true" />
+      {isOpen ? "Ouvert" : nextOpeningTime ? `Ouvre à ${nextOpeningTime}` : "Fermé"}
     </span>
   );
 }

@@ -11,25 +11,25 @@
       "description": "Pain croustillant, viande grillee et sauces maison.",
       "items": [
         {
-          "id": "berliner-classique",
-          "name": "Berliner Classique",
-          "price": "9,50 €",
-          "description": "Viande, salade, tomates, oignons et sauce maison.",
+          "id": "berliner-poulet",
+          "name": "Berliner Poulet",
+          "price": "9,40 €",
+          "description": "Poulet frais mariné, légumes, crudités fraiches, féta, citron , pain rond ou galette maison.",
           "image": "/assets/images/menu-banner.png",
-          "alt": "Berliner classique Sauce"
+          "alt": "Berliner poulet - Sauce."
         },
          {
-          "id": "berliner-classique",
-          "name": "Berliner Classique",
-          "price": "9,50 €",
+          "id": "berliner-halloumi",
+          "name": "Berliner Halloumi",
+          "price": "9,40 €",
           "description": "Viande, salade, tomates, oignons et sauce maison.",
           "image": "/assets/images/menu-banner.png",
           "alt": "Berliner classique Sauce"
         },
         {
           "id": "berliner-fromage",
-          "name": "Berliner Fromage",
-          "price": "10,50 €",
+          "name": "Berliner Veggie",
+          "price": "7,90 €",
           "description": "Version fondante avec fromage et double sauce.",
           "image": "/assets/images/IMG_6933.PNG",
           "alt": "Berliner fromage Sauce"

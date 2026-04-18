@@ -12,7 +12,6 @@ const navLinks: NavLink[] = [
   { href: "/menu", label: "Menu" },
   { href: "/restaurants", label: "Restaurants" },
   { href: "/franchise", label: "Franchise" },
-  { href: "/#horaires-acces", label: "Horaires & accès" },
   { href: "/faq", label: "FAQ" },
 ];
 
@@ -138,10 +137,11 @@ export function SiteHeader() {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="rolling-btn brand-font block cursor-pointer px-2 py-1 text-3xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-5xl lg:text-6xl xl:text-6xl"
+                        className="rolling-btn brand-font inline-flex cursor-pointer px-2 py-1 text-3xl uppercase leading-none tracking-[0.02em] text-[var(--cream)] transition-[color,text-shadow] duration-300 hover:text-white hover:[text-shadow:4px_4px_0_#772C00] md:text-5xl lg:text-6xl xl:text-6xl"
                         onClick={() => setIsOpen(false)}
                       >
                         <RollingText text={link.label} />
+                        <RollingText text="." className="round-dot-font -translate-y-[0.03em]" />
                       </Link>
                     </li>
                   ))}

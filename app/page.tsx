@@ -1,13 +1,19 @@
 import { Reveal } from "@/components/reveal";
 import { RollingText } from "@/components/rolling-text";
-import { HorairesActions } from "@/components/horaires-actions";
 import { CursorTiltGallery } from "@/components/cursor-tilt-gallery";
+import { ConceptStepsGsap } from "@/components/concept-steps-gsap";
+import { HomeMaisonBanner } from "@/components/home-maison-banner";
+import { RestaurantsHomeSlider } from "@/components/restaurants/restaurants-home-slider";
+import restaurantsDataJson from "@/data/restaurants.json";
+import type { RestaurantData } from "@/types/restaurants";
 import Image from "next/image";
 import Link from "next/link";
 
+const restaurantsData = restaurantsDataJson as RestaurantData;
+
 export default function HomePage() {
   return (
-    <div className="bg-[var(--background)]">
+    <div className="overflow-x-hidden bg-[var(--background)]">
       <Reveal className="relative isolate h-[86svh] min-h-[620px] overflow-hidden">
         <video
           className="h-full w-full object-cover"
@@ -85,6 +91,42 @@ export default function HomePage() {
         </Reveal>
       </section>
 
+      <ConceptStepsGsap />
+
+      <HomeMaisonBanner
+        text="100% maison"
+        imageSrc="/assets/images/hf_20260418_002637_c1cdcfb3-64e1-4f92-bbda-f014bcfa0ae9.png"
+        imageAlt="Banniere Sauce 100% maison"
+        tilt="left"
+        bannerStart="top 84%"
+        bannerEnd="top 56%"
+        textStart="top 90%"
+        textEnd="top 32%"
+      />
+      <HomeMaisonBanner
+        className="mt-2 md:mt-4 lg:mt-5 "
+        text="DE LA BROCHE"
+        imageSrc="/assets/images/kebab-spit.png"
+        imageAlt="Banniere Sauce viande grillee"
+        tilt="right"
+        bannerStart="top 100%"
+        bannerEnd="top 50%"
+        textStart="top 88%"
+        textEnd="top 28%"
+      />
+      <HomeMaisonBanner
+        className="mt-2 md:mt-4 lg:mt-5 "
+        text="à la sauce"
+        imageSrc="/assets/images/sauces-banner.png"
+        imageAlt="Banniere Sauce sauces maison"
+        tilt="left"
+        bannerStart="top 80%"
+        bannerEnd="top 30%"
+        textStart="top 100%"
+        textEnd="top 30%"
+      />
+
+      {/*
       <section id="horaires-acces" className="px-6 py-16">
         <Reveal className="container-shell">
           <h1 className="brand-font text-center text-6xl uppercase leading-none text-white [text-shadow:4px_4px_0_#a74c17] md:text-8xl">
@@ -173,6 +215,18 @@ export default function HomePage() {
             >
               <RollingText text="Voir le menu" />
             </Link>
+          </div>
+        </Reveal>
+      </section>
+      */}
+
+      <section className="px-6 py-14 md:py-20">
+        <Reveal className="container-shell">
+          <h2 className="brand-font text-center text-6xl uppercase leading-none text-white [text-shadow:4px_4px_0_#a74c17] md:text-8xl">
+            Nos restaurants
+          </h2>
+          <div className="mt-8 md:mt-10">
+            <RestaurantsHomeSlider restaurants={restaurantsData.restaurants} />
           </div>
         </Reveal>
       </section>

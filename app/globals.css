@@ -10,6 +10,12 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "DinRoundBold";
+  src: url("/assets/fonts/din-round-bold.ttf") format("truetype");
+  font-display: swap;
+}
+
 :root {
   --paragraph: #421800;
   --surface: #f0dbb5;
@@ -112,6 +118,10 @@ body::-webkit-scrollbar-button:single-button {
 
 .brand-font {
   font-family: "SauceBrand", var(--font-display), Impact, sans-serif;
+}
+
+.round-dot-font {
+  font-family: "DinRoundBold", "SauceBrand", var(--font-display), Impact, sans-serif;
 }
 
 .surface-card {
