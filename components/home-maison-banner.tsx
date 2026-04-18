@@ -39,7 +39,7 @@ export function HomeMaisonBanner({
     gsap.registerPlugin(ScrollTrigger);
 
     const collapsedHeight = window.innerWidth < 768 ? 100 : 200;
-    const expandedHeight = window.innerWidth < 768 ? 150 : 400;
+    const expandedHeight = window.innerWidth < 768 ? 220 : 400;
     const growthOffset = expandedHeight - collapsedHeight;
     const chars = sectionRef.current.querySelectorAll<HTMLElement>("[data-maison-char]");
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
