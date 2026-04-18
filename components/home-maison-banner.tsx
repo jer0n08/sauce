@@ -50,7 +50,7 @@ export function HomeMaisonBanner({
 
     const ctx = gsap.context(() => {
       gsap.set(bannerRef.current, { minHeight: collapsedHeight, y: growthOffset });
-      gsap.set(chars, { yPercent: 35 });
+      gsap.set(chars, { autoAlpha: 0, yPercent: 35 });
 
       const bannerTween = gsap.to(bannerRef.current, {
         minHeight: expandedHeight,
@@ -66,6 +66,7 @@ export function HomeMaisonBanner({
       });
 
       const textTween = gsap.to(chars, {
+        autoAlpha: 1,
         yPercent: 0,
         duration: 0.38,
         ease: "power3.out",
