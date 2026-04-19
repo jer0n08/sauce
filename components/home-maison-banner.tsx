@@ -9,6 +9,7 @@ type HomeMaisonBannerProps = {
   text: string;
   imageSrc: string;
   imageAlt: string;
+  imageLoading?: "eager" | "lazy";
   tilt?: "left" | "right";
   className?: string;
   bannerStart?: string;
@@ -21,6 +22,7 @@ export function HomeMaisonBanner({
   text,
   imageSrc,
   imageAlt,
+  imageLoading = "lazy",
   tilt = "left",
   className = "",
   bannerStart = "top 80%",
@@ -103,6 +105,7 @@ export function HomeMaisonBanner({
         <Image
           src={imageSrc}
           alt={imageAlt}
+          loading={imageLoading}
           fill
           className="object-cover"
           sizes="100vw"

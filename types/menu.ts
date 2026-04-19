@@ -1,4 +1,4 @@
-export type MenuCategoryId = "berliner" | "durums" | "assiettes" | "frites";
+export type MenuCategoryId = "berliner" | "pain" | "sauce" | "ingredient" | "extra" | "frites" | "soif";
 
 export type MenuItem = {
   id: string;
@@ -12,8 +12,13 @@ export type MenuItem = {
 export type MenuCategory = {
   id: MenuCategoryId;
   label: string;
+  titlePrice?: string;
   description?: string;
   items: MenuItem[];
+  badges?: Array<{
+    label: string;
+    price?: string;
+  }>;
 };
 
 export type MenuHero = {

@@ -1,6 +1,6 @@
 import restaurantsDataJson from "@/data/restaurants.json";
 import { RestaurantsList } from "@/components/restaurants/restaurants-list";
-import { MenuBannerParallax } from "@/components/menu-banner-parallax";
+import { BannerParallax } from "@/components/banner-parallax";
 import type { RestaurantData } from "@/types/restaurants";
 
 const restaurantsData = restaurantsDataJson as RestaurantData;
@@ -8,7 +8,7 @@ const restaurantsData = restaurantsDataJson as RestaurantData;
 export default function RestaurantsPage() {
   return (
     <div className="bg-[var(--background)]">
-      <MenuBannerParallax
+      <BannerParallax
         title={restaurantsData.hero.title}
         imageSrc={restaurantsData.hero.imageSrc}
         imageAlt={restaurantsData.hero.imageAlt}

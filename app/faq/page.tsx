@@ -1,4 +1,4 @@
-import { MenuBannerParallax } from "@/components/menu-banner-parallax";
+import { BannerParallax } from "@/components/banner-parallax";
 const faqs = [
   {
     question: "Quels sont vos horaires ?",
@@ -25,7 +25,7 @@ const faqs = [
 export default function FaqPage() {
   return (
     <div className="bg-[var(--background)]">
-      <MenuBannerParallax
+      <BannerParallax
         title="FAQ"
         imageSrc="/assets/images/menu-banner.png"
         imageAlt="Comptoir et equipe Sauce"

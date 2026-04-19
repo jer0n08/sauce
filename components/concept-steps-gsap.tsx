@@ -13,12 +13,16 @@ const conceptSteps = [
     options: ["Pain rond", "Galette"],
   },
   {
+    title: "Ingrédients",
+    options: ["Complet", "Sur-mesure"],
+  },
+  {
     title: "Sauce",
-    options: ["Sauce a l'ail", "Blanche", "Harissa fumee", "Secret sauce"],
+    options: ["Sauce à l'ail", "Blanche", "Harissa fumée", "Secret sauce"],
   },
   {
     title: "Extras",
-    options: ["Frites", "Supplements"],
+    options: ["Frites", "Suppléments"],
   },
 ];
 

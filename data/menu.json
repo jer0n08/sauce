@@ -7,13 +7,12 @@
   "categories": [
     {
       "id": "berliner",
-      "label": "Berliner",
-      "description": "Pain croustillant, viande grillee et sauces maison.",
+      "label": "Choisis ton Berliner",
       "items": [
         {
           "id": "berliner-poulet",
           "name": "Berliner Poulet",
-          "price": "9,40 €",
+          "price": "9,40€",
           "description": "Poulet frais mariné, légumes, crudités fraiches, féta, citron , pain rond ou galette maison.",
           "image": "/assets/images/menu-banner.png",
           "alt": "Berliner poulet - Sauce."
@@ -21,7 +20,7 @@
          {
           "id": "berliner-halloumi",
           "name": "Berliner Halloumi",
-          "price": "9,40 €",
+          "price": "9,40€",
           "description": "Viande, salade, tomates, oignons et sauce maison.",
           "image": "/assets/images/menu-banner.png",
           "alt": "Berliner classique Sauce"
@@ -29,7 +28,7 @@
         {
           "id": "berliner-fromage",
           "name": "Berliner Veggie",
-          "price": "7,90 €",
+          "price": "7,90€",
           "description": "Version fondante avec fromage et double sauce.",
           "image": "/assets/images/IMG_6933.PNG",
           "alt": "Berliner fromage Sauce"
@@ -37,72 +36,63 @@
       ]
     },
     {
-      "id": "durums",
-      "label": "Durums",
-      "description": "Galette chaude, roulee minute.",
-      "items": [
-        {
-          "id": "durum-classique",
-          "name": "Durum Classique",
-          "price": "9,00 €",
-          "description": "Galette, viande grillee, crudites et sauce au choix.",
-          "image": "/assets/images/hf_20260407_110616_70860d9a-2596-429f-ba27-122cc762b314.png",
-          "alt": "Durum classique Sauce"
-        },
-        {
-          "id": "durum-poulet",
-          "name": "Durum Poulet",
-          "price": "9,50 €",
-          "description": "Poulet marine, crudites fraiches et sauce blanche.",
-          "image": "/assets/images/658440595_17889865677446344_2492821235290666953_n.jpeg",
-          "alt": "Durum poulet Sauce"
-        }
+      "id": "pain",
+      "label": "Pain",
+      "items": [],
+      "badges": [
+        { "label": "Pain rond boulanger" },
+        { "label": "Galette maison" }
       ]
     },
     {
-      "id": "assiettes",
-      "label": "Assiettes",
-      "description": "Servies avec accompagnements et sauces maison.",
-      "items": [
-        {
-          "id": "assiette-berliner",
-          "name": "Assiette Berliner",
-          "price": "13,50 €",
-          "description": "Viande grillade, salade composee et pain chaud.",
-          "image": "/assets/images/IMG_6933.PNG",
-          "alt": "Assiette Berliner Sauce"
-        },
-        {
-          "id": "assiette-mixte",
-          "name": "Assiette Mixte",
-          "price": "14,50 €",
-          "description": "Selection de viandes, legumes croquants et sauce signature.",
-          "image": "/assets/images/menu-banner.png",
-          "alt": "Assiette mixte Sauce"
-        }
+      "id": "sauce",
+      "label": "Sauce",
+      "items": [],
+      "badges": [
+        { "label": "Sauce à l'ail" },
+        { "label": "Blanche" },
+        { "label": "Harissa fumée" },
+        { "label": "Secret sauce" }
+      ]
+    },
+    {
+      "id": "ingredient",
+      "label": "Ingrédients",
+      "items": [],
+      "badges": [
+        { "label": "Complet" },
+        { "label": "Sur-mesure" }
+      ]
+    },
+    {
+      "id": "extra",
+      "label": "Extra",
+      "items": [],
+      "badges": [
+        { "label": "Supplément assiette", "price": "+2,90€" },
+        { "label": "Supplément viande", "price": "+2,90€" },
+        { "label": "Supplément halloumi", "price": "+2,90€" }
       ]
     },
     {
       "id": "frites",
-      "label": "Frites",
-      "description": "Dorées, croustillantes et genereuses.",
-      "items": [
-        {
-          "id": "frites-maison",
-          "name": "Frites Maison",
-          "price": "4,00 €",
-          "description": "Portion croustillante salee minute.",
-          "image": "/assets/images/hf_20260407_110616_70860d9a-2596-429f-ba27-122cc762b314.png",
-          "alt": "Frites maison Sauce"
-        },
-        {
-          "id": "frites-cheddar",
-          "name": "Frites Cheddar",
-          "price": "5,50 €",
-          "description": "Frites maison, cheddar fondant et topping oignons frits.",
-          "image": "/assets/images/658440595_17889865677446344_2492821235290666953_n.jpeg",
-          "alt": "Frites cheddar Sauce"
-        }
+      "label": "Une envie de frites ?",
+      "items": [],
+      "badges": [
+        { "label": "Frites", "price": "2,50€" }
+      ]
+    },
+    {
+      "id": "soif",
+      "label": "Une petite soif ?",
+      "titlePrice": "1€",
+      "items": [],
+      "badges": [
+        { "label": "Coca-cola" },
+        { "label": "Ice tea" },
+        { "label": "Coca cola zero" },
+        { "label": "San Pellegrino" },
+        { "label": "Evian" }
       ]
     }
   ]

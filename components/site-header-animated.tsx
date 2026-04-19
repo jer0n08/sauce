@@ -88,6 +88,11 @@ export function SiteHeaderAnimated() {
     setIsMenuVisible(false);
   };
 
+  const handleLogoClick = () => {
+    closeMenuImmediately();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   useLayoutEffect(() => {
     if (!menuPanelRef.current || !menuListRef.current) {
       return;
@@ -189,7 +194,7 @@ export function SiteHeaderAnimated() {
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="container-shell relative py-5">
         <div className="pointer-events-auto relative z-50 flex h-16 items-center justify-between rounded-full bg-[var(--brand)] px-5 text-[var(--cream)] md:px-6">
-          <Link href="/" className="display-font text-2xl leading-none" onClick={closeMenuImmediately}>
+          <Link href="/" className="display-font text-2xl leading-none" onClick={handleLogoClick}>
             <Image
               src="/assets/brand/logo-nav.svg"
               alt="Sauce"

@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "swiper/css";
+@import "swiper/css/effect-cards";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -229,6 +231,22 @@ body::-webkit-scrollbar-button:single-button {
 .menu-scroll::-webkit-scrollbar-thumb,
 .menu-scroll::-webkit-scrollbar-track {
   background: transparent;
+}
+
+.menu-cards-swiper .swiper-pagination {
+  bottom: -40px !important;
+}
+
+.menu-cards-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: var(--cream);
+  opacity: 1;
+  border: 1px solid var(--brand);
+}
+
+.menu-cards-swiper .swiper-pagination-bullet-active {
+  background: var(--brand);
 }
 
 @media (prefers-reduced-motion: reduce) {

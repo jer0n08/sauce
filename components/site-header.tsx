@@ -69,6 +69,11 @@ export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const [cityTimes, setCityTimes] = useState(initialCityTimes);
 
+  const handleLogoClick = () => {
+    setIsOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   useEffect(() => {
     const updateTimes = () => setCityTimes(getCityTimes());
     updateTimes();
@@ -93,7 +98,7 @@ export function SiteHeader() {
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="container-shell relative py-5">
         <div className="pointer-events-auto relative z-50 flex h-16 items-center justify-between rounded-full bg-[var(--brand)] px-5 text-[var(--cream)] md:px-6">
-          <Link href="/" className="display-font text-2xl leading-none">
+          <Link href="/" className="display-font text-2xl leading-none" onClick={handleLogoClick}>
             <Image
               src="/assets/brand/logo-nav.svg"
               alt="Sauce"

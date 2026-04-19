@@ -69,7 +69,7 @@ export function MenuItemCard({ item }: MenuItemCardProps) {
   return (
     <article
       ref={cardRef}
-      className="mx-auto w-full max-w-sm overflow-hidden rounded-[40px] border-[6px] border-[var(--brand)] bg-white !shadow-[8px_8px_0_0_#AF9A72] text-left transform-gpu [transform-style:preserve-3d] will-change-transform"
+      className="mx-auto w-full max-w-sm overflow-hidden rounded-[40px] border-[6px] border-[var(--brand)] bg-white text-left transform-gpu [transform-style:preserve-3d] will-change-transform"
     >
       <div className="p-4">
         <div ref={mediaRef} className="relative aspect-square w-full overflow-hidden rounded-[20px] will-change-transform">
@@ -80,7 +80,7 @@ export function MenuItemCard({ item }: MenuItemCardProps) {
       <div className="space-y-3 px-4 pb-4 pt-0 md:px-5 md:pb-5 md:pt-0">
         <div className="flex items-start justify-between gap-3">
           <h3 className="brand-font text-3xl uppercase leading-none text-[var(--brand)] md:text-4xl">{item.name}</h3>
-          <p className="brand-font shrink-0 text-3xl leading-none text-[var(--brand)] md:text-4xl">{item.price}</p>
+          <p className="brand-font shrink-0 bg-[var(--brand)] px-2 py-1 text-xl leading-none text-white md:text-2xl">{item.price}</p>
         </div>
         <p className="paragraph-text text-sm leading-relaxed md:text-base">{item.description}</p>
       </div>

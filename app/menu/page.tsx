@@ -1,5 +1,4 @@
-import { MenuBannerParallax } from "@/components/menu-banner-parallax";
-import { CategoryNav } from "@/components/menu/category-nav";
+import { BannerParallax } from "@/components/banner-parallax";
 import { CategorySection } from "@/components/menu/category-section";
 import menuDataJson from "@/data/menu.json";
 import type { MenuData } from "@/types/menu";
@@ -9,7 +8,7 @@ const menuData = menuDataJson as MenuData;
 export default function MenuPage() {
   return (
     <div className="bg-[var(--background)]">
-      <MenuBannerParallax
+      <BannerParallax
         title={menuData.hero.title}
         imageSrc={menuData.hero.imageSrc}
         imageAlt={menuData.hero.imageAlt}
@@ -18,11 +17,9 @@ export default function MenuPage() {
       />
 
       <div className="container-shell px-1 py-10 md:py-14">
-        <CategoryNav categories={menuData.categories.map(({ id, label }) => ({ id, label }))} />
-
-        <div className="mt-10 space-y-12 md:space-y-16">
-          {menuData.categories.map((category) => (
-            <CategorySection key={category.id} category={category} />
+        <div className="space-y-12 md:space-y-16">
+          {menuData.categories.map((category, index) => (
+            <CategorySection key={category.id} category={category} order={index + 1} />
           ))}
         </div>
       </div>

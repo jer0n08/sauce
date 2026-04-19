@@ -98,7 +98,7 @@ export default function HomePage() {
         imageSrc="/assets/images/hf_20260418_002637_c1cdcfb3-64e1-4f92-bbda-f014bcfa0ae9.png"
         imageAlt="Banniere Sauce 100% maison"
         tilt="left"
-        bannerStart="top 84%"
+        bannerStart="top 80%"
         bannerEnd="top 56%"
         textStart="top 90%"
         textEnd="top 32%"
@@ -109,8 +109,8 @@ export default function HomePage() {
         imageSrc="/assets/images/kebab-spit.png"
         imageAlt="Banniere Sauce viande grillee"
         tilt="right"
-        bannerStart="top 100%"
-        bannerEnd="top 50%"
+        bannerStart="top 70%"
+        bannerEnd="top 30%"
         textStart="top 88%"
         textEnd="top 28%"
       />
@@ -119,11 +119,12 @@ export default function HomePage() {
         text="à la sauce"
         imageSrc="/assets/images/sauces-banner.png"
         imageAlt="Banniere Sauce sauces maison"
+        imageLoading="eager"
         tilt="left"
         bannerStart="top 80%"
-        bannerEnd="top 30%"
+        bannerEnd="top 18%"
         textStart="top 100%"
-        textEnd="top 30%"
+        textEnd="top 40%"
       />
 
       {/*

@@ -5,7 +5,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-type MenuBannerParallaxProps = {
+type BannerParallaxProps = {
   title: string;
   imageSrc: string;
   imageAlt: string;
@@ -13,7 +13,7 @@ type MenuBannerParallaxProps = {
   sectionClassName?: string;
 };
 
-export function MenuBannerParallax({ title, imageSrc, imageAlt, imageClassName = "", sectionClassName = "" }: MenuBannerParallaxProps) {
+export function BannerParallax({ title, imageSrc, imageAlt, imageClassName = "", sectionClassName = "" }: BannerParallaxProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -35,8 +35,8 @@ export function MenuBannerParallax({ title, imageSrc, imageAlt, imageClassName =
       }
 
       gsap.set(chars, { autoAlpha: 0, y: 34 });
-      gsap.fromTo(heading, { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power2.out" });
-      gsap.to(chars, { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.11, ease: "power3.out", delay: 0.1 });
+      gsap.fromTo(heading, { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 0.32, ease: "power2.out" });
+      gsap.to(chars, { autoAlpha: 1, y: 0, duration: 0.34, stagger: 0.045, ease: "power3.out", delay: 0.04 });
     }, heading);
 
     return () => ctx.revert();
@@ -106,7 +106,7 @@ export function MenuBannerParallax({ title, imageSrc, imageAlt, imageClassName =
       <div className="container-shell relative z-10 flex h-full items-center justify-center text-center">
         <h1
           ref={titleRef}
-          className="brand-font text-7xl uppercase leading-none text-white [text-shadow:4px_4px_0_var(--brand)] md:text-9xl"
+          className="brand-font text-6xl md:text-7xl uppercase leading-none text-white [text-shadow:4px_4px_0_var(--brand)] md:text-9xl"
         >
           {Array.from(title).map((char, index) => (
             <span
