@@ -1,8 +1,7 @@
 "use client";
 
+import useEmblaCarousel from "embla-carousel-react";
 import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode } from "swiper/modules";
 import { RestaurantCard } from "@/components/restaurants/restaurant-card";
 import type { Restaurant } from "@/types/restaurants";
 
@@ -12,35 +11,28 @@ type RestaurantsHomeSliderProps = {
 
 export function RestaurantsHomeSlider({ restaurants }: RestaurantsHomeSliderProps) {
   const [orderPanelRestaurantId, setOrderPanelRestaurantId] = useState<string | null>(null);
+  const [emblaRef] = useEmblaCarousel({
+    align: "start",
+    dragFree: true,
+    containScroll: "trimSnaps",
+  });
 
   return (
-    <Swiper
-      modules={[FreeMode]}
-      centeredSlides={false}
-      slidesPerView="auto"
-      slidesOffsetBefore={0}
-      spaceBetween={20}
-      freeMode={{
-        enabled: true,
-        sticky: false,
-      }}
-      className="restaurants-home-swiper !overflow-visible pb-4 md:[--swiper-slide-width:22.5rem] lg:[--swiper-slide-width:23rem]"
-      breakpoints={{
-        768: { spaceBetween: 28, slidesOffsetBefore: 0 },
-      }}
-    >
-      {restaurants.map((restaurant) => (
-        <SwiperSlide key={restaurant.id} className="!w-[82vw] md:!w-[var(--swiper-slide-width)]">
-          <RestaurantCard
-            restaurant={restaurant}
-            isOrderPanelOpen={orderPanelRestaurantId === restaurant.id}
-            onOpenOrderPanel={setOrderPanelRestaurantId}
-            onCloseOrderPanel={() => setOrderPanelRestaurantId(null)}
-            className="h-[25.5rem] w-full md:h-[28rem]"
-            imageSizes="(max-width: 768px) 82vw, (max-width: 1024px) 22.5rem, 23rem"
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="-mr-10 overflow-hidden pb-4 pr-10 md:-mr-24 md:pr-24 lg:-mr-44 lg:pr-44" ref={emblaRef}>
+      <div className="flex touch-pan-y gap-5 md:gap-7">
+        {restaurants.map((restaurant) => (
+          <div key={restaurant.id} className="min-w-0 flex-[0_0_82vw] md:flex-[0_0_22.5rem] lg:flex-[0_0_23rem]">
+            <RestaurantCard
+              restaurant={restaurant}
+              isOrderPanelOpen={orderPanelRestaurantId === restaurant.id}
+              onOpenOrderPanel={setOrderPanelRestaurantId}
+              onCloseOrderPanel={() => setOrderPanelRestaurantId(null)}
+              className="h-[25.5rem] w-full md:h-[28rem]"
+              imageSizes="(max-width: 768px) 82vw, (max-width: 1024px) 22.5rem, 23rem"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
