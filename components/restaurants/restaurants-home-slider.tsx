@@ -24,7 +24,7 @@ export function RestaurantsHomeSlider({ restaurants }: RestaurantsHomeSliderProp
         enabled: true,
         sticky: false,
       }}
-      className="!overflow-visible pb-4 md:[--swiper-slide-width:22.5rem] lg:[--swiper-slide-width:23rem]"
+      className="restaurants-home-swiper !overflow-visible pb-4 md:[--swiper-slide-width:22.5rem] lg:[--swiper-slide-width:23rem]"
       breakpoints={{
         768: { spaceBetween: 28, slidesOffsetBefore: 0 },
       }}

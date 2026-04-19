@@ -249,6 +249,20 @@ body::-webkit-scrollbar-button:single-button {
   background: var(--brand);
 }
 
+.restaurants-home-swiper .swiper-wrapper,
+.restaurants-home-swiper .swiper-slide,
+.restaurants-home-swiper .restaurant-card-surface {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.restaurants-home-swiper .swiper-slide > * {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rolling-char {
     transition: none;
