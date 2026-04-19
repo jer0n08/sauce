@@ -81,7 +81,7 @@ function TiltCard({ photo }: { photo: GalleryPhoto }) {
           ref={innerRef}
           className="relative aspect-[3/4] overflow-hidden rounded-2xl border-[20px] border-white shadow-[0_12px_20px_rgba(0,0,0,0.16)] [transform-style:preserve-3d] transform-gpu will-change-transform"
         >
-          <Image src={photo.src} alt="Galerie Sauce" fill className="object-cover" sizes="(max-width: 768px) 70vw, 24vw" />
+          <Image src={photo.src} alt="Galerie Sauce" fill className="object-cover" sizes="(max-width: 768px) 70vw, (max-width: 1024px) 42vw, 24vw" />
         </div>
       </div>
     </Reveal>
@@ -92,7 +92,7 @@ export function CursorTiltGallery() {
 
   return (
     <section className="overflow-hidden px-2 py-20 md:px-6">
-      <div className="mx-auto grid max-w-[1240px] gap-4 md:grid-cols-4 md:gap-6">
+      <div className="mx-auto grid max-w-[1240px] gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
         {galleryPhotos.map((photo) => (
           <TiltCard key={photo.src} photo={photo} />
         ))}
