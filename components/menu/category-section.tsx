@@ -19,11 +19,11 @@ export function CategorySection({ category, order }: CategorySectionProps) {
         <div className="inline-flex items-start gap-2">
           <span className="brand-font -rotate-6 bg-white px-2 py-1 text-xl leading-none text-[var(--brand)] md:text-2xl">{order}.</span>
           <h2
-            className={`brand-font inline-flex items-center bg-[var(--brand)] px-2 text-5xl uppercase leading-none text-white md:text-5xl ${
+            className={`brand-font max-w-[min(78vw,20rem)] text-left text-5xl uppercase leading-[1.08] text-white md:max-w-none md:text-5xl md:leading-[0.9] ${
               order % 2 === 0 ? "rotate-2" : "-rotate-2"
             }`}
           >
-            <span className="pt-1">{category.label}</span>
+            <span className="box-decoration-clone bg-[var(--brand)] px-2 pt-1">{category.label}</span>
           </h2>
           {category.titlePrice ? (
             <span className="brand-font -rotate-6 bg-[var(--brand)] px-1 py-1 text-lg leading-none text-white md:text-xl">{category.titlePrice}</span>

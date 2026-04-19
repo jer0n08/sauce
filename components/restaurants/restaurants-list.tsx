@@ -130,18 +130,19 @@ export function RestaurantsList({ restaurants }: RestaurantsListProps) {
             Aucun restaurant pour ce lieu.
           </div>
         ) : (
-          <div className="grid grid-cols-1 justify-center gap-10 md:gap-8 lg:gap-9  md:grid-cols-[repeat(2,minmax(0,50rem))] lg:grid-cols-[repeat(3,minmax(0,23rem))] xl:grid-cols-[repeat(3,minmax(0,23rem))]">
+          <div className="flex flex-wrap justify-center gap-10 md:gap-8 lg:gap-9">
             {filteredRestaurants.map((restaurant) => {
               const isOrderPanelOpen = orderPanelRestaurantId === restaurant.id;
 
               return (
-                <RestaurantCard
-                  key={restaurant.id}
-                  restaurant={restaurant}
-                  isOrderPanelOpen={isOrderPanelOpen}
-                  onOpenOrderPanel={setOrderPanelRestaurantId}
-                  onCloseOrderPanel={closeOrderPanel}
-                />
+                <div key={restaurant.id} className="w-full md:w-[22.5rem] lg:w-[23rem]">
+                  <RestaurantCard
+                    restaurant={restaurant}
+                    isOrderPanelOpen={isOrderPanelOpen}
+                    onOpenOrderPanel={setOrderPanelRestaurantId}
+                    onCloseOrderPanel={closeOrderPanel}
+                  />
+                </div>
               );
             })}
           </div>

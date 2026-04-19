@@ -30,7 +30,7 @@ export function RestaurantCard({
 }: RestaurantCardProps) {
   return (
     <article
-      className={`relative isolate min-h-[27rem] w-full overflow-hidden rounded-[36px] border-[6px] border-[var(--brand)] bg-[var(--cream)] text-left text-[var(--paragraph)] !shadow-[8px_8px_0_0_#AF9A72] md:min-h-[30rem] ${className ?? ""}`}
+      className={`relative isolate h-[27rem] w-full overflow-hidden rounded-[36px] border-[6px] border-[var(--brand)] bg-[var(--cream)] text-left text-[var(--paragraph)] !shadow-[8px_8px_0_0_#AF9A72] md:h-[30rem] ${className ?? ""}`}
     >
       <div className="group relative flex h-full flex-col">
         <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[30px]">
@@ -47,8 +47,8 @@ export function RestaurantCard({
 
         <div className="relative z-10 flex h-full flex-col p-4 md:p-5 pointer-events-none select-none">
           <div className="flex flex-col items-center text-center">
-            <h2 className="brand-font inline-block bg-[var(--brand)] px-2 py-1 text-3xl uppercase leading-none text-white md:text-3xl">
-              {restaurant.name}
+            <h2 className="brand-font inline-block text-3xl uppercase leading-[1.2] text-white md:text-3xl md:leading-[1.08]">
+              <span className="box-decoration-clone bg-[var(--brand)] px-2 py-1">{restaurant.name}</span>
             </h2>
             <a
               href={getGoogleMapsUrl(restaurant.address)}
