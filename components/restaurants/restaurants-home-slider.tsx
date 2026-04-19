@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode } from "swiper/modules";
 import { RestaurantCard } from "@/components/restaurants/restaurant-card";
 import type { Restaurant } from "@/types/restaurants";
 
@@ -14,10 +15,15 @@ export function RestaurantsHomeSlider({ restaurants }: RestaurantsHomeSliderProp
 
   return (
     <Swiper
+      modules={[FreeMode]}
       centeredSlides={false}
       slidesPerView="auto"
       slidesOffsetBefore={0}
       spaceBetween={20}
+      freeMode={{
+        enabled: true,
+        sticky: false,
+      }}
       className="!overflow-visible pb-4 md:[--swiper-slide-width:22.5rem] lg:[--swiper-slide-width:23rem]"
       breakpoints={{
         768: { spaceBetween: 28, slidesOffsetBefore: 0 },
