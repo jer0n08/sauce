@@ -150,7 +150,7 @@ export default function HomePage() {
             <div className="text-[var(--brand)]">
               <div className="mb-4">
                 <h3 className="display-font inline-flex items-center gap-2 bg-[var(--brand)] px-2 text-3xl uppercase leading-none text-white">
-                  <img src="/assets/images/map.svg" alt="" width={18} height={18} aria-hidden="true" />
+                  <Image src="/assets/images/map.svg" alt="" width={18} height={18} aria-hidden="true" />
                   <span className="pt-1">Adresse</span>
                 </h3>
                 <p className="paragraph-text mt-2 text-base">57 Rue du Faubourg Montmartre, 75009 Paris</p>
