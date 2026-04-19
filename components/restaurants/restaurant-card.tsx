@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { RestaurantOpenStatus } from "@/components/restaurants/restaurant-open-status";
 import { RollingText } from "@/components/rolling-text";
@@ -64,14 +65,23 @@ export function RestaurantCard({
           </div>
 
           <div className="mt-auto flex flex-col items-center gap-3 pt-4 pointer-events-auto">
-            <a
-              href={getGoogleMapsUrl(restaurant.address)}
-              target="_blank"
-              rel="noreferrer"
-              className="commander-btn-compact rolling-btn brand-font inline-flex w-fit cursor-pointer rounded-lg border-2 border-[var(--brand)] bg-white px-5 py-2 text-2xl uppercase leading-none text-[var(--brand)] transition-colors duration-250"
-            >
-              <RollingText text="Sur place" />
-            </a>
+            {restaurant.pageHref ? (
+              <Link
+                href={restaurant.pageHref}
+                className="commander-btn-compact rolling-btn brand-font inline-flex w-fit cursor-pointer rounded-lg border-2 border-[var(--brand)] bg-white px-5 py-2 text-2xl uppercase leading-none text-[var(--brand)] transition-colors duration-250"
+              >
+                <RollingText text="Voir la page" />
+              </Link>
+            ) : (
+              <a
+                href={getGoogleMapsUrl(restaurant.address)}
+                target="_blank"
+                rel="noreferrer"
+                className="commander-btn-compact rolling-btn brand-font inline-flex w-fit cursor-pointer rounded-lg border-2 border-[var(--brand)] bg-white px-5 py-2 text-2xl uppercase leading-none text-[var(--brand)] transition-colors duration-250"
+              >
+                <RollingText text="Voir la page" />
+              </a>
+            )}
 
             <button
               type="button"

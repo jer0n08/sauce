@@ -234,7 +234,7 @@ body::-webkit-scrollbar-button:single-button {
 }
 
 .menu-cards-swiper .swiper-pagination {
-  bottom: -40px !important;
+  bottom: -30px !important;
 }
 
 .menu-cards-swiper .swiper-pagination-bullet {

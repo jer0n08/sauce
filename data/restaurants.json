@@ -8,6 +8,7 @@
     {
       "id": "sauce-paris-opera",
       "name": "Sauce Paris Opera",
+      "pageHref": "/restaurants/paris-opera",
       "address": "57 Rue du Faubourg Montmartre, 75009 Paris",
       "bannerImage": "/assets/images/hf_20260407_110616_70860d9a-2596-429f-ba27-122cc762b314.png",
       "bannerAlt": "Restaurant Sauce a Paris",

@@ -14,6 +14,7 @@ export type DeliveryLinks = {
 export type Restaurant = {
   id: string;
   name: string;
+  pageHref?: string;
   address: string;
   bannerImage: string;
   bannerAlt: string;

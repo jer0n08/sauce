@@ -16,7 +16,7 @@ export function CategorySection({ category, order }: CategorySectionProps) {
   return (
     <section id={category.id} className="scroll-mt-32 text-center md:scroll-mt-36">
       <header className="mx-auto max-w-3xl">
-        <div className="inline-flex items-start gap-2">
+        <div className="inline-flex items-start gap-2 mt-4">
           <span className="brand-font -rotate-6 bg-white px-2 py-1 text-xl leading-none text-[var(--brand)] md:text-2xl">{order}.</span>
           <h2
             className={`brand-font max-w-[min(78vw,20rem)] text-left text-5xl uppercase leading-[1.08] text-white md:max-w-none md:text-5xl md:leading-[0.9] ${
